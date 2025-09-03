@@ -1,1 +1,1 @@
-# **BienvenidXs** al taller de Introducción a Linux para Bioinformática
+**BienvenidXs** al taller de Introducción a Linux para Bioinformática.
