@@ -1,0 +1,63 @@
+--- 
+title: "Introducción a Linux para Bioinformática"
+author: "LandaLab"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+#bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+cover-image: images/LandaLab.jpeg
+description: Material para el taller de Introducción a Linux para Bioinformática
+#link-citations: yes
+#github-repo: rstudio/bookdown-demo
+---
+
+
+# 🧪 Bienvenid@s
+
+**Este repositorio contiene el material del taller “Introducción a Linux”, un espacio abierto para todas las personas que quieran aprender a analizar y visualizar datos con Linux**  
+No importa tu edad, formación o experiencia previa: si tienes curiosidad y ganas de aprender, este taller es para ti.
+
+---
+
+## 📚 Sobre el taller
+
+- **Lenguaje**: Linux 
+- **Nivel**: Principiante  
+- **Modalidad**: Práctico, con ejercicios guiados y codificación en vivo  
+- **Dirigido a**: Cualquier persona interesada en aprender Linux para Bioinformática  
+- **Requisitos**: Ninguno. No necesitas saber programación ni instalar ningún programa. Sólo necesitas una computadora con acceso a internet
+
+---
+
+## 🧰 ¿Qué aprenderás?
+
+Al finalizar el taller, podrás:
+
+- Comunicarte con Linux a través de Shell
+- Manipular archivos  
+- Crear proyectos
+- Automatizar tareas
+- Escribir scripts reproducibles  
+- Comprender los principios básicos del análisis de datos en Linux
+- Descargar secuencias genómicas
+- Instalar programas
+
+---
+
+## 🌐 Plataforma
+
+Trabajaremos en una plataforma en línea, por lo que **no necesitas instalar nada en tu computadora**. El acceso será gratuito y se proporcionará durante el taller.
+
+---
+
+## 🙌 Agradecimientos
+
+Este taller es parte de un esfuerzo por compartir herramientas abiertas, accesibles y colaborativas. Queremos que más personas se acerquen al mundo de los datos y la ciencia sin barreras. ¡Gracias por formar parte!
+
+---
+
+## 💬 ¿Dudas o comentarios?
+
+Puedes abrir un [Issue](https://github.com/) o escribirnos durante el taller.  
+¡Estamos aquí para aprender junt@s!

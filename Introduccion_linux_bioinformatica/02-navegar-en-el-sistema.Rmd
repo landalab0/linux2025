@@ -1,0 +1,5 @@
+# Navegar en el sistema de ficheros
+
+todo lo de este archivo hasta atajos en el teclado
+
+https://github.com/DianaOaxaca/Introduccion_linux_para_bioinformatica/blob/main/Comandos_utiles.md

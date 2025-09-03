@@ -1,0 +1,11 @@
+# Introducción a Linux
+
+## Porqué aprender a usar Linux y el Shell para Bioinformática
+
+## Sistema operativo, Linux y Shell
+
+## Sistema de ficheros
+
+## Cómo accedemos al Shell
+
+## Tipos de archivos

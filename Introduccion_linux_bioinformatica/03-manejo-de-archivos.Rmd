@@ -1,0 +1,428 @@
+# Manejo de archivos
+
+## Código reproducible
+
+**"Los sucesos únicos no reproducibles, no tienen importancia para la ciencia"**
+-Karl Popper, the Logic of Scientific, 1959.
+
+
+¿Qué se necesita para reproducir el resultado de un análisis computacional?
+
+* **Los datos:**
+  - La fuente de donde se descargaron.
+  - La versión de la fuente asociada a ellos.
+  
+* **Los programas utilizados para analizarlos:**
+  - La versión de cada uno de los programas.
+  - Los valores de cada uno de los argumentos utilizados.
+
+**Argumentos a tener en cuenta para tener buenas prácticas:**
+
+- Actualización de bases de datos.
+- Siempre existirán excepciones que no cumplen con las suposiciones de tu código.
+- **Qué un programa genere un resultado no significa que el resultado sea correcto.**
+- Todo lo que se te puede olvidar, **¡se te va a olvidar!**
+  * Fuente
+  * Suposiciones iniciales
+  * ¿Qué genera esa función compleja y rebuscada que parecía una joya en su momento?
+
+**SIEMPRE, documenta tu código**
+
+Comienza por la organización: La estructura de directorios debe estar organizada, lo mejor es
+tener un directorio de trabajo por proyecto, los pasos del proyecto se organizarán en
+subdirectorios.
+
+La estructura de directorios propuesta para estas asesorías es:
+
+`Linux` Este es el directorio principal del proyecto.
+
+`data`  En este directorio van los datos de entrada para el proyecto.
+
+`src`   En este directorio van los scripts ya probados y funcionales.
+
+`results` En este directorio van los resultados generados.
+
+---
+
+## Bases de datos y secuencias biológicas
+
+**Base de datos**: Es una colección organizada de información estructurada, o datos, normalmente
+almacenados electrónicamente en un sistema informático.
+
+En bioinformática se utilizan diversas bases de datos, algunos ejemplos son:
+
+De diversos organismos:
+
+NCBI: https://www.ncbi.nlm.nih.gov/
+
+Genomas de referencia NCBI: https://ftp.ncbi.nlm.nih.gov/genomes/refseq/
+
+ENSEMBL: https://www.ensembl.org/index.html
+
+UCSC Table Browser: https://genome.ucsc.edu/cgi-bin/hgTables
+
+Dedicadas a organismos específicos:
+
+Ecocyc
+
+Flybase
+
+Wormbase
+
+Especializadas en un tema particular:
+
+**ENCODE:** Elementos funcionales del genoma humano
+
+**RegulonDB:** Regulación transcripcional de E. coli
+
+**Pfam:** Familias proteícas
+
+**miRBase:** Secuencias de miRNA y sus blancos
+
+
+**Secuencias biológicas**: Archivo que contiene la secuencia de genes, genomas y/o proteínas.
+
+**Fasta**: Se compone de un identificador de la secuencia, seguido (por salto de línea) de la
+secuencia de nucleótidos o aminoácidos de un gene, genoma o proteína.
+
+**Fastq**: Normalmente se conmpone de cuatro lineas por secuencia
+
+`Line 1` Comienza con '@' seguido del identificador de la secuencia y una descripción opcional.
+
+`Line 2` La secuencia cruda nucleótidos.
+
+`Line 3` Comienza con un '+' opcionalmente incluye el identificador de la secuencia.
+
+`Line 4` Indica los valores de calidad de la secuencia, debe contener el mismo número de símbolos que el número de nucleótidos.
+
+
+**De anotación**: GeneBank o tabulares GFF, GTF, GFF3
+
+**Tabulares:** Una línea por cada elemento. Cada línea DEBE contener 9 campos. Los campos DEBEN estar separados por tabuladores. Todos los campos DEBEN contener un valor, los campos vacíos se denotan con ’.’
+
+`seqname` Nombre del cromosoma
+
+`source` Nombre del programa que generó ese elemento
+
+`feature` Tipo de elemento
+
+`start` Posición de inicio
+
+`end` Posición de final
+
+`score` Un valor de punto flotante
+
+`strand` La cadena (+ , - )
+
+`frame` Marco de lectura
+
+`attribute` Pares tag-value, separados por coma, que proveen información
+adicional
+
+
+```bash
+>ID_secuencia,metadatos de identificación
+ATGCCCGGTAAAGGATCCCCCCTATGCCGTATAGC
+>ID_secuencia,metadatos de identificación
+MIPEKRIIRRIQSGGCAIHCQDCSISQLCIPFTLNEHELDQLDNI
+```
+
+```bash
+@SEQ_ID
+GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
++
+!''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF>>>>>>CCCCCCC65
+```
+
+Agunos foros para pedir ayuda:
+
+**Stackoverflow:** https://stackoverflow.com/
+
+**Biostars:** https://www.biostars.org/
+
+**Researchgate:** https://www.researchgate.net/
+
+**IAs**
+
+---
+
+## Manejo de archivos
+**wget, curl, shasum, md5sum, diff, scp, rsync, gunzip, unzip, tar, head, tail, more, less, cat, >, >>, nano**
+
+Link para el genoma de Raoultella terrigena:
+
+https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/
+Raoultella_terrigena/representative/GCF_012029655.1_ASM1202965v1/
+
+Para descargar archivos a nuestra computadora desde la terminal, se requiere utilizar protocolos de transferencia, los comandos `wget` o `curl` funcionan para ello. Veámos un ejemplo:
+
+- Crea el directorio principal de trabajo para este proyecto y sus subdirectorios asociados.
+
+- Accede al directorio data
+
+- Descarga el genoma representativo de Raoultella terrigena de la Refseq de NCBI
+
+- Ahora descarga las secuencias proteícas
+
+¿Notaste algún cambio?
+- Vuelve a descargar el genoma de Raoultella terrigena, pero ahora asegúrate de guardar la secuencia en un archivo llamado Raoultella_terrigena.fasta.gz
+
+```bash
+wget
+https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r
+epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_gen
+omic.fna.gz .
+```
+
+```bash
+#Para mobaxterm
+wget --no-check-certificate
+https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r
+epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_cds
+_from_genomic.fna.gz .
+
+#--no-check-certificate para saltarse los certificados (MobaXterm)
+```
+
+Descarga el archivo de aminoácidos de Raoultella terrigena
+
+```bash
+wget --no-check-certificate -O Raoultella_terrigena.faa.gz
+https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r
+epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_pro
+tein.faa.gz .
+```
+
+¿Qué ocurrió?
+
+`curl` Realiza la misma función básica que wget , las diferencias principales son: El output lo imprime a standar output, imprime varias estadísticas útiles sobre la descarga.
+
+```bash
+curl
+https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r
+epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_pro
+tein.faa.gz .
+
+curl
+https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r
+epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_pro
+tein.faa.gz > Raoultella_terrigena2.faa.gz
+```
+
+¿Cómo comprobamos que dos archivos son idénticos? Hemos descargado dos veces la secuencia genómica de *Raoultella terrigena*. Comprobemos que ambos archivos son idénticos.
+
+Prueba con `diff -s`
+
+```bash
+diff GCF_012029655.1_ASM1202965v1_genomic.fna.gz Raoultella_terrigena.fasta.gz
+```
+
+¿Y si comparas el faa vs fasta?
+
+```bash
+diff ../data/Raoultella_terrigena.faa.gz ../data/Raoultella_terrigena.fasta.gz
+```
+
+---
+
+## Redireccionamientos y evaluación de la integridad
+
+**`>`** Permite direccionar un resultado a un archivo nuevo. Crea el archivo si no existe y lo sobre escribe si existe. 
+
+**`>>`** Permite redireccionar un resultado en pantalla o un archivo a otro, sin remplazar o sobreescribir. Crea el archivo si no existe y agrega el nuevo contenido al final, si el archivo existe.
+
+
+**`shasum`** y **`md5sum`** son programas que generan una suma encriptada única para cada
+archivo.
+
+
+Revisemos la integridad de los archivos, descarga el archivo md5checksums.txt del directorio genomes/refseq/bacteria/Raoultella terigena de NCBI
+
+```bash
+curl
+https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r
+epresentative/GCF_012029655.1_ASM1202965v1/md5checksums.txt >
+md5sum_R.terrigena.txt
+```
+
+```bash
+shasum Raoultella_terrigena.fasta.gz
+md5sum Raoultella_terrigena.fasta.gz
+more md5sum_R.terrigena.txt
+```
+
+
+Redireccionemos los resultados de integridad a un archivo nuevo.
+
+```bash
+md5sum Raoultella_terrigena.fasta.gz >
+../resuts/R.terrigena.md5sum.check
+
+cat ../results/R.terrigena.msd5sum.check
+cat md5sum_R.terrigena.txt >> ../results/R.terrigena.md5sum.check
+cat ../results/R.terrigena.msd5sum.check
+```
+
+---
+
+## Transferencia de archivos
+
+Esta parte no la vamos a practicar porque estamos usando una interfaz gráfica con acceso al servidor, pero si no tienes esta forma de acceso es necesario usar estos comandos, asi que te dejamos el ejemplo. :)
+
+```bash
+`scp` [FUENTE][DESTINO]
+#FUENTE=Nombre del archivo que quieres transferir
+#DESTINO=Ruta de destino
+#Ejemplo de mi computadora al servidor:
+scp md5sum_R.terrigena.txt hoaxaca@132.248.220.35:/space31/PEG/hoaxaca
+#Me pedirá el password
+#Funciona de manera inversa si quieres bajar del servidor a tu computadora
+scp hoaxaca@132.248.220.35:/space31/PEG/hoaxaca/md5sum_R.terrigena.txt .#ojo el
+destino puede ser con ruta absoluta o relativa, aquí fue relativa "."
+#También puedes usar rsync
+`rsync -e ssh` [FUENTE][DESTINO]
+# -e ssh indica que nos conectaremos al servidor a través de una conexión de
+tipo ssh
+```
+
+---
+
+## Compresión y descompresión
+
+Para descomprimir archivos usamos **`gunzip`**.
+
+```bash
+gunzip Raoultella_terrigena.fasta.gz
+gunzip *.gz
+```
+
+Para comprimir usamos **`gzip`**.
+
+```bash
+gzip *.f*
+```
+¿Y si quiero comprimir directorios? Para ello utilizo tar que es un método de ultra
+compresión, muy utilizada en datos genómicos. Vamos a comprimir el directorio practica1
+
+```bash
+cd ../../
+tar cvzf practica1.tar.gz practica1/
+# c = crea un nuevo directorio
+# v = muestra el progreso dde la compresión
+# z = genera un archivo comprimido en zip (.gz)
+# f = para indicar el nombre del archivo comprimido
+```
+
+Y para descomprimir?
+
+```bash
+rm -r practica1/
+tar -xvf practica1.tar.gz
+# ¿qué hace el flag x?
+```
+
+---
+
+## Explorar archivos
+
+Veamos las primeras líneas del archivo de anotación .gtf del genoma de Raoultella terrigena
+
+```bash
+#¿Y, cuál es ese, lo tenemos?
+cd sesion2/test/
+#Ahora vamos a descargar desde test a data/
+wget -O Raoultella_terrigena.gtf
+https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/repre
+sentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_genomic.gtf
+.gz ../data/
+gunzip ../data/Raoultella_terrigena.gtf
+#Ahora si
+head ../data/Raoultella_terrigena.gtf
+# ¿Y si quiero ver las primeras 20 lineas?
+head -n 20 ../data/Raoultella_terrigena.gtf
+```
+
+Ahora quiero ver las últimas líneas de un archivo
+
+```bash
+tail ../data/Raoultella_terrigena.gtf
+```
+
+
+Veamos el genoma
+
+```bash
+more ../data/Raoultella_terrigena.fasta
+# Enter => Navegar hacia abajo de línea en línea
+# Espacio => Navega hacia abajo de pantalla en pantalla
+```
+
+Pero podemos ver archivos con algo más potente
+
+```bash
+less ../data/Raoultella_terrigena.gtf
+
+```
+
+**`Espacio OR Enter`** => Navegar hacia abajo
+
+**`b OR flecha arriba`** => Navegar hacia arriba
+
+**`/WORD`** => Búsqueda forward
+
+**`n`** => Siguiente
+
+**`?WORD`** => Búsqueda backward
+
+**`N`** => Anterior
+
+**`G`** => Ir al final del archivo
+
+**`g`** => Ir al inicio del archivo
+
+**`-S`** => Mostrar una línea por renglón
+
+
+---
+
+## Ejercicio 02
+
+Estás realizando tu proyecto con Raoultella terrigena y tu directora de tesis te pregunta si hay genes nitrogenasa ubicados en la posición 501417 o 3010433 del genoma representativo de los genomas de referencia de esta especie. Tú debes responderle si están o no en esa posición, y si no están, avisarle en qué posición se encuentran y cuántos son.
+
+**Pseudocódigo** Es la manera en la que planeas, diseñas la ruta de trabajo que usarás para responder una pregunta. Es el diseño experimental.
+
+Pseudocódigo:
+
+
+1. Crea el directorio Practica2
+
+
+2. Descarga el archivo de anotación .gff de Raoultella terrigena en el directorio correspondiente.
+
+
+3. Revisa su integridad y redirecciona el resultado al directorio correspondiente
+
+
+4. Descomprime el archivo de anotación
+
+
+5. Navega al final del archivo
+
+
+6. Navega al inicio del archivo
+
+
+7. Busca el gene que inicie en la posición 501417
+
+
+8. Busca el CDS que termine en la posición 3010433
+
+
+9. Busca los genes nitrogenasa
+
+
+10. Escribe los resultados
+
+
+
+

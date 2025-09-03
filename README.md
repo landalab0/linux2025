@@ -1,1 +1,1 @@
-# linux2025
+# **BienvenidXs** al taller de Introducción a Linux para Bioinformática
