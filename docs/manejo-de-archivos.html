@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Manejo de archivos | Introducción a Linux para Bioinformática</title>
+  <title>Capítulo 4 Manejo de archivos | Introducción a Linux para Bioinformática</title>
   <meta name="description" content="Material para el taller de Introducción a Linux para Bioinformática" />
   <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Manejo de archivos | Introducción a Linux para Bioinformática" />
+  <meta property="og:title" content="Capítulo 4 Manejo de archivos | Introducción a Linux para Bioinformática" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/LandaLab.jpeg" />
   <meta property="og:description" content="Material para el taller de Introducción a Linux para Bioinformática" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Manejo de archivos | Introducción a Linux para Bioinformática" />
+  <meta name="twitter:title" content="Capítulo 4 Manejo de archivos | Introducción a Linux para Bioinformática" />
   
   <meta name="twitter:description" content="Material para el taller de Introducción a Linux para Bioinformática" />
   <meta name="twitter:image" content="/images/LandaLab.jpeg" />
@@ -23,7 +23,7 @@
 <meta name="author" content="LandaLab" />
 
 
-<meta name="date" content="2025-09-03" />
+<meta name="date" content="2025-09-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,19 +193,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="manejo-de-archivos" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Manejo de archivos<a href="manejo-de-archivos.html#manejo-de-archivos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Capítulo 4</span> Manejo de archivos<a href="manejo-de-archivos.html#manejo-de-archivos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="código-reproducible" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Código reproducible<a href="manejo-de-archivos.html#código-reproducible" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>“Los sucesos únicos no reproducibles, no tienen importancia para la ciencia”
+<p><strong>“Los sucesos únicos no reproducibles, no tienen importancia para la ciencia”</strong>
 -Karl Popper, the Logic of Scientific, 1959.</p>
 <p>¿Qué se necesita para reproducir el resultado de un análisis computacional?</p>
 <ul>
-<li>Los datos:
+<li><strong>Los datos:</strong>
 <ul>
 <li>La fuente de donde se descargaron.</li>
 <li>La versión de la fuente asociada a ellos.</li>
 </ul></li>
-<li>Los programas utilizados para analizarlos:
+<li><strong>Los programas utilizados para analizarlos:</strong>
 <ul>
 <li>La versión de cada uno de los programas.</li>
 <li>Los valores de cada uno de los argumentos utilizados.</li>
@@ -232,49 +232,46 @@ subdirectorios.</p>
 <p><code>data</code> En este directorio van los datos de entrada para el proyecto.</p>
 <p><code>src</code> En este directorio van los scripts ya probados y funcionales.</p>
 <p><code>results</code> En este directorio van los resultados generados.</p>
+<hr />
 </div>
 <div id="bases-de-datos-y-secuencias-biológicas" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Bases de datos y secuencias biológicas<a href="manejo-de-archivos.html#bases-de-datos-y-secuencias-biológicas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Base de datos</strong>: Es una colección organizada de información estructurada, o datos, normalmente
 almacenados electrónicamente en un sistema informático.</p>
 <p>En bioinformática se utilizan diversas bases de datos, algunos ejemplos son:</p>
-<p>De diversos organismos:
-NCBI: <a href="https://www.ncbi.nlm.nih.gov/" class="uri">https://www.ncbi.nlm.nih.gov/</a>
-Genomas de referencia NCBI: <a href="https://ftp.ncbi.nlm.nih.gov/genomes/refseq/" class="uri">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/</a>
-ENSEMBL: <a href="https://www.ensembl.org/index.html" class="uri">https://www.ensembl.org/index.html</a>
-UCSC Table Browser: <a href="https://genome.ucsc.edu/cgi-bin/hgTables" class="uri">https://genome.ucsc.edu/cgi-bin/hgTables</a></p>
-<p>Dedicadas a organismos específicos:
-Ecocyc
-Flybase
-Wormbase</p>
-<p>Especializadas en un tema particular
-ENCODE: Elementos funcionales del genoma humano
-RegulonDB: Regulación transcripcional de E. coli
-Pfam: Familias proteícas
-miRBase: Secuencias de miRNA y sus blancos</p>
+<p>De diversos organismos:</p>
+<p>NCBI: <a href="https://www.ncbi.nlm.nih.gov/" class="uri">https://www.ncbi.nlm.nih.gov/</a></p>
+<p>Genomas de referencia NCBI: <a href="https://ftp.ncbi.nlm.nih.gov/genomes/refseq/" class="uri">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/</a></p>
+<p>ENSEMBL: <a href="https://www.ensembl.org/index.html" class="uri">https://www.ensembl.org/index.html</a></p>
+<p>UCSC Table Browser: <a href="https://genome.ucsc.edu/cgi-bin/hgTables" class="uri">https://genome.ucsc.edu/cgi-bin/hgTables</a></p>
+<p>Dedicadas a organismos específicos:</p>
+<p>Ecocyc</p>
+<p>Flybase</p>
+<p>Wormbase</p>
+<p>Especializadas en un tema particular:</p>
+<p><strong>ENCODE:</strong> Elementos funcionales del genoma humano</p>
+<p><strong>RegulonDB:</strong> Regulación transcripcional de E. coli</p>
+<p><strong>Pfam:</strong> Familias proteícas</p>
+<p><strong>miRBase:</strong> Secuencias de miRNA y sus blancos</p>
 <p><strong>Secuencias biológicas</strong>: Archivo que contiene la secuencia de genes, genomas y/o proteínas.</p>
 <p><strong>Fasta</strong>: Se compone de un identificador de la secuencia, seguido (por salto de línea) de la
 secuencia de nucleótidos o aminoácidos de un gene, genoma o proteína.</p>
 <p><strong>Fastq</strong>: Normalmente se conmpone de cuatro lineas por secuencia</p>
-<p><code>Line 1</code> Comienza con ‘@’ seguido del identificador de la secuencia y una descripción
-opcional
-<code>Line 2</code> La secuencia cruda nucleótidos
-<code>Line 3</code> Comienza con un ‘+’ opcionalmente incluye el identificador de la secuencia
-<code>Line 4</code> Indica los valores de calidad de la secuencia, debe contener el mismo número de
-símbolos que el número de nucleótidos.</p>
+<p><code>Line 1</code> Comienza con ‘@’ seguido del identificador de la secuencia y una descripción opcional.</p>
+<p><code>Line 2</code> La secuencia cruda nucleótidos.</p>
+<p><code>Line 3</code> Comienza con un ‘+’ opcionalmente incluye el identificador de la secuencia.</p>
+<p><code>Line 4</code> Indica los valores de calidad de la secuencia, debe contener el mismo número de símbolos que el número de nucleótidos.</p>
 <p><strong>De anotación</strong>: GeneBank o tabulares GFF, GTF, GFF3</p>
-<p>Tabulares: Una línea por cada elemento. Cada línea DEBE contener 9 campos. Los
-campos DEBEN estar separados por tabuladores. Todos los campos DEBEN contener un
-valor, los campos vacíos se denotan con ’.’</p>
-<p><code>seqname</code> Nombre del cromosoma
-<code>source</code> Nombre del programa que generó ese elemento
-<code>feature</code> Tipo de elemento
-<code>start</code> Posición de inicio
-<code>end</code> Posición de final
-<code>score</code> Un valor de punto flotante
-<code>strand</code> La cadena (+ , - )
-<code>frame</code> Marco de lectura
-<code>attribute</code> Pares tag-value, separados por coma, que proveen información
+<p><strong>Tabulares:</strong> Una línea por cada elemento. Cada línea DEBE contener 9 campos. Los campos DEBEN estar separados por tabuladores. Todos los campos DEBEN contener un valor, los campos vacíos se denotan con ’.’</p>
+<p><code>seqname</code> Nombre del cromosoma</p>
+<p><code>source</code> Nombre del programa que generó ese elemento</p>
+<p><code>feature</code> Tipo de elemento</p>
+<p><code>start</code> Posición de inicio</p>
+<p><code>end</code> Posición de final</p>
+<p><code>score</code> Un valor de punto flotante</p>
+<p><code>strand</code> La cadena (+ , - )</p>
+<p><code>frame</code> Marco de lectura</p>
+<p><code>attribute</code> Pares tag-value, separados por coma, que proveen información
 adicional</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="manejo-de-archivos.html#cb1-1" tabindex="-1"></a><span class="op">&gt;</span>ID_secuencia,metadatos <span class="ex">de</span> identificación</span>
 <span id="cb1-2"><a href="manejo-de-archivos.html#cb1-2" tabindex="-1"></a><span class="ex">ATGCCCGGTAAAGGATCCCCCCTATGCCGTATAGC</span></span>
@@ -284,16 +281,18 @@ adicional</p>
 <span id="cb2-2"><a href="manejo-de-archivos.html#cb2-2" tabindex="-1"></a><span class="ex">GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT</span></span>
 <span id="cb2-3"><a href="manejo-de-archivos.html#cb2-3" tabindex="-1"></a><span class="ex">+</span></span>
 <span id="cb2-4"><a href="manejo-de-archivos.html#cb2-4" tabindex="-1"></a><span class="ex">!</span><span class="st">&#39;&#39;</span><span class="ex">*</span><span class="er">((</span>((<span class="op">***+</span>))<span class="op">%%%++</span><span class="kw">)(</span><span class="ex">%%%%</span><span class="kw">)</span><span class="ex">.1***-+*</span><span class="st">&#39;&#39;</span><span class="kw">)</span><span class="er">)</span><span class="ex">**55CCF</span><span class="op">&gt;&gt;&gt;&gt;&gt;&gt;</span>CCCCCCC65</span></code></pre></div>
-<p>Agunos foros para pedir ayuda:
-Stackoverflow: <a href="https://stackoverflow.com/" class="uri">https://stackoverflow.com/</a>
-Biostars: <a href="https://www.biostars.org/" class="uri">https://www.biostars.org/</a>
-Researchgate: <a href="https://www.researchgate.net/" class="uri">https://www.researchgate.net/</a>
-IAs</p>
+<p>Agunos foros para pedir ayuda:</p>
+<p><strong>Stackoverflow:</strong> <a href="https://stackoverflow.com/" class="uri">https://stackoverflow.com/</a></p>
+<p><strong>Biostars:</strong> <a href="https://www.biostars.org/" class="uri">https://www.biostars.org/</a></p>
+<p><strong>Researchgate:</strong> <a href="https://www.researchgate.net/" class="uri">https://www.researchgate.net/</a></p>
+<p><strong>IAs</strong></p>
+<hr />
 </div>
 <div id="manejo-de-archivos-1" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Manejo de archivos<a href="manejo-de-archivos.html#manejo-de-archivos-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>wget, curl, shasum, md5sum, diff, scp, rsync, gunzip, unzip, tar, head, tail, more, less, cat, &gt;, &gt;&gt;, nano</strong></p>
-<p>Link para el genoma de Raoultella terrigena: <a href="https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/" class="uri">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/</a>
+<p>Link para el genoma de Raoultella terrigena:</p>
+<p><a href="https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/" class="uri">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/</a>
 Raoultella_terrigena/representative/GCF_012029655.1_ASM1202965v1/</p>
 <p>Para descargar archivos a nuestra computadora desde la terminal, se requiere utilizar protocolos de transferencia, los comandos <code>wget</code> o <code>curl</code> funcionan para ello. Veámos un ejemplo:</p>
 <ul>
@@ -336,12 +335,13 @@ Raoultella_terrigena/representative/GCF_012029655.1_ASM1202965v1/</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="manejo-de-archivos.html#cb7-1" tabindex="-1"></a><span class="fu">diff</span> GCF_012029655.1_ASM1202965v1_genomic.fna.gz Raoultella_terrigena.fasta.gz</span></code></pre></div>
 <p>¿Y si comparas el faa vs fasta?</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="manejo-de-archivos.html#cb8-1" tabindex="-1"></a><span class="fu">diff</span> ../data/Raoultella_terrigena.faa.gz ../data/Raoultella_terrigena.fasta.gz</span></code></pre></div>
+<hr />
 </div>
 <div id="redireccionamientos-y-evaluación-de-la-integridad" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Redireccionamientos y evaluación de la integridad<a href="manejo-de-archivos.html#redireccionamientos-y-evaluación-de-la-integridad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><code>&gt;</code> Permite direccionar un resultado a un archivo nuevo. Crea el archivo si no existe y lo sobre escribe si existe.
-<code>&gt;&gt;</code> Permite redireccionar un resultado en pantalla o un archivo a otro, sin remplazar o sobreescribir. Crea el archivo si no existe y agrega el nuevo contenido al final, si el archivo existe.</p>
-<p><code>shasum</code> y <code>md5sum</code> son programas que generan una suma encriptada única para cada
+<p><strong><code>&gt;</code></strong> Permite direccionar un resultado a un archivo nuevo. Crea el archivo si no existe y lo sobre escribe si existe.</p>
+<p><strong><code>&gt;&gt;</code></strong> Permite redireccionar un resultado en pantalla o un archivo a otro, sin remplazar o sobreescribir. Crea el archivo si no existe y agrega el nuevo contenido al final, si el archivo existe.</p>
+<p><strong><code>shasum</code></strong> y <strong><code>md5sum</code></strong> son programas que generan una suma encriptada única para cada
 archivo.</p>
 <p>Revisemos la integridad de los archivos, descarga el archivo md5checksums.txt del directorio genomes/refseq/bacteria/Raoultella terigena de NCBI</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="manejo-de-archivos.html#cb9-1" tabindex="-1"></a><span class="ex">curl</span></span>
@@ -358,6 +358,7 @@ archivo.</p>
 <span id="cb11-4"><a href="manejo-de-archivos.html#cb11-4" tabindex="-1"></a><span class="fu">cat</span> ../results/R.terrigena.msd5sum.check</span>
 <span id="cb11-5"><a href="manejo-de-archivos.html#cb11-5" tabindex="-1"></a><span class="fu">cat</span> md5sum_R.terrigena.txt <span class="op">&gt;&gt;</span> ../results/R.terrigena.md5sum.check</span>
 <span id="cb11-6"><a href="manejo-de-archivos.html#cb11-6" tabindex="-1"></a><span class="fu">cat</span> ../results/R.terrigena.msd5sum.check</span></code></pre></div>
+<hr />
 </div>
 <div id="transferencia-de-archivos" class="section level2 hasAnchor" number="4.5">
 <h2><span class="header-section-number">4.5</span> Transferencia de archivos<a href="manejo-de-archivos.html#transferencia-de-archivos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -375,13 +376,14 @@ archivo.</p>
 <span id="cb12-11"><a href="manejo-de-archivos.html#cb12-11" tabindex="-1"></a><span class="kw">`</span><span class="fu">rsync</span> <span class="at">-e</span> ssh<span class="kw">`</span> <span class="pp">[</span><span class="ss">FUENTE</span><span class="pp">][</span><span class="ss">DESTINO</span><span class="pp">]</span></span>
 <span id="cb12-12"><a href="manejo-de-archivos.html#cb12-12" tabindex="-1"></a><span class="co"># -e ssh indica que nos conectaremos al servidor a través de una conexión de</span></span>
 <span id="cb12-13"><a href="manejo-de-archivos.html#cb12-13" tabindex="-1"></a><span class="ex">tipo</span> ssh</span></code></pre></div>
+<hr />
 </div>
 <div id="compresión-y-descompresión" class="section level2 hasAnchor" number="4.6">
 <h2><span class="header-section-number">4.6</span> Compresión y descompresión<a href="manejo-de-archivos.html#compresión-y-descompresión" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Para descomprimir archivos usamos <code>gunzip</code>.</p>
+<p>Para descomprimir archivos usamos <strong><code>gunzip</code></strong>.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="manejo-de-archivos.html#cb13-1" tabindex="-1"></a><span class="fu">gunzip</span> Raoultella_terrigena.fasta.gz</span>
 <span id="cb13-2"><a href="manejo-de-archivos.html#cb13-2" tabindex="-1"></a><span class="fu">gunzip</span> <span class="pp">*</span>.gz</span></code></pre></div>
-<p>Para comprimir usamos <code>gzip</code>.</p>
+<p>Para comprimir usamos <strong><code>gzip</code></strong>.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="manejo-de-archivos.html#cb14-1" tabindex="-1"></a><span class="fu">gzip</span> <span class="pp">*</span>.f<span class="pp">*</span></span></code></pre></div>
 <p>¿Y si quiero comprimir directorios? Para ello utilizo tar que es un método de ultra
 compresión, muy utilizada en datos genómicos. Vamos a comprimir el directorio practica1</p>
@@ -395,6 +397,7 @@ compresión, muy utilizada en datos genómicos. Vamos a comprimir el directorio 
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="manejo-de-archivos.html#cb16-1" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> practica1/</span>
 <span id="cb16-2"><a href="manejo-de-archivos.html#cb16-2" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xvf</span> practica1.tar.gz</span>
 <span id="cb16-3"><a href="manejo-de-archivos.html#cb16-3" tabindex="-1"></a><span class="co"># ¿qué hace el flag x?</span></span></code></pre></div>
+<hr />
 </div>
 <div id="explorar-archivos" class="section level2 hasAnchor" number="4.7">
 <h2><span class="header-section-number">4.7</span> Explorar archivos<a href="manejo-de-archivos.html#explorar-archivos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -419,31 +422,34 @@ compresión, muy utilizada en datos genómicos. Vamos a comprimir el directorio 
 <span id="cb19-3"><a href="manejo-de-archivos.html#cb19-3" tabindex="-1"></a><span class="co"># Espacio =&gt; Navega hacia abajo de pantalla en pantalla</span></span></code></pre></div>
 <p>Pero podemos ver archivos con algo más potente</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="manejo-de-archivos.html#cb20-1" tabindex="-1"></a><span class="fu">less</span> ../data/Raoultella_terrigena.gtf</span></code></pre></div>
-<p><em>Espacio OR Enter</em> =&gt; Navegar hacia abajo
-<em>b OR flecha arriba</em> =&gt; Navegar hacia arriba
-<em>/WORD</em> =&gt; Búsqueda forward
-<em>n</em> =&gt; Siguiente
-<em>?WORD</em> =&gt; Búsqueda backward
-<em>N</em> =&gt; Anterior
-<em>G</em> =&gt; Ir al final del archivo
-<em>g</em> =&gt; Ir al inicio del archivo
-<em>-S</em> =&gt; Mostrar una línea por renglón</p>
+<p><strong><code>Espacio OR Enter</code></strong> =&gt; Navegar hacia abajo</p>
+<p><strong><code>b OR flecha arriba</code></strong> =&gt; Navegar hacia arriba</p>
+<p><strong><code>/WORD</code></strong> =&gt; Búsqueda forward</p>
+<p><strong><code>n</code></strong> =&gt; Siguiente</p>
+<p><strong><code>?WORD</code></strong> =&gt; Búsqueda backward</p>
+<p><strong><code>N</code></strong> =&gt; Anterior</p>
+<p><strong><code>G</code></strong> =&gt; Ir al final del archivo</p>
+<p><strong><code>g</code></strong> =&gt; Ir al inicio del archivo</p>
+<p><strong><code>-S</code></strong> =&gt; Mostrar una línea por renglón</p>
+<hr />
 </div>
 <div id="ejercicio-02" class="section level2 hasAnchor" number="4.8">
 <h2><span class="header-section-number">4.8</span> Ejercicio 02<a href="manejo-de-archivos.html#ejercicio-02" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Estás realizando tu proyecto con Raoultella terrigena y tu directora de tesis te pregunta si hay genes nitrogenasa ubicados en la posición 501417 o 3010433 del genoma representativo de los genomas de referencia de esta especie. Tú debes responderle si están o no en esa posición, y si no están, avisarle en qué posición se encuentran y cuántos son.</p>
 <p><strong>Pseudocódigo</strong> Es la manera en la que planeas, diseñas la ruta de trabajo que usarás para responder una pregunta. Es el diseño experimental.</p>
-<p>Pseudocódigo:
-1. Crea el directorio Practica2
-2. Descarga el archivo de anotación .gff de Raoultella terrigena en el directorio correspondiente.
-3. Revisa su integridad y redirecciona el resultado al directorio correspondiente
-4. Descomprime el archivo de anotación
-5. Navega al final del archivo
-6. Navega al inicio del archivo
-7. Busca el gene que inicie en la posición 501417
-8. Busca el CDS que termine en la posición 3010433
-9. Busca los genes nitrogenasa
-10. Escribe los resultados</p>
+<p>Pseudocódigo:</p>
+<ol style="list-style-type: decimal">
+<li><p>Crea el directorio Practica2</p></li>
+<li><p>Descarga el archivo de anotación .gff de Raoultella terrigena en el directorio correspondiente.</p></li>
+<li><p>Revisa su integridad y redirecciona el resultado al directorio correspondiente</p></li>
+<li><p>Descomprime el archivo de anotación</p></li>
+<li><p>Navega al final del archivo</p></li>
+<li><p>Navega al inicio del archivo</p></li>
+<li><p>Busca el gene que inicie en la posición 501417</p></li>
+<li><p>Busca el CDS que termine en la posición 3010433</p></li>
+<li><p>Busca los genes nitrogenasa</p></li>
+<li><p>Escribe los resultados</p></li>
+</ol>
 
 </div>
 </div>
