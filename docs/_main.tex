@@ -1,0 +1,1058 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Introducción a Linux para Bioinformática},
+  pdfauthor={LandaLab},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Introducción a Linux para Bioinformática}
+\author{LandaLab}
+\date{2025-09-08}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\chapter{\texorpdfstring{🧪 \href{mailto:Bienvenid@s}{\nolinkurl{Bienvenid@s}}}{🧪 Bienvenid@s}}\label{bienvenids}
+
+\textbf{Este repositorio contiene el material del taller ``Introducción a Linux'', un espacio abierto para todas las personas que quieran aprender a analizar y visualizar datos con Linux}\\
+No importa tu edad, formación o experiencia previa: si tienes curiosidad y ganas de aprender, este taller es para ti.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{📚 Sobre el taller}\label{sobre-el-taller}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Lenguaje}: Linux
+\item
+  \textbf{Nivel}: Principiante\\
+\item
+  \textbf{Modalidad}: Práctico, con ejercicios guiados y codificación en vivo\\
+\item
+  \textbf{Dirigido a}: Cualquier persona interesada en aprender Linux para Bioinformática\\
+\item
+  \textbf{Requisitos}: Ninguno. No necesitas saber programación ni instalar ningún programa. Sólo necesitas una computadora con acceso a internet
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{🧰 ¿Qué aprenderás?}\label{quuxe9-aprenderuxe1s}
+
+Al finalizar el taller, podrás:
+
+\begin{itemize}
+\tightlist
+\item
+  Comunicarte con Linux a través de Shell
+\item
+  Manipular archivos\\
+\item
+  Crear proyectos
+\item
+  Automatizar tareas
+\item
+  Escribir scripts reproducibles\\
+\item
+  Comprender los principios básicos del análisis de datos en Linux
+\item
+  Descargar secuencias genómicas
+\item
+  Instalar programas
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{🌐 Plataforma}\label{plataforma}
+
+Trabajaremos en una plataforma en línea, por lo que \textbf{no necesitas instalar nada en tu computadora}. El acceso será gratuito y se proporcionará durante el taller.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{🙌 Agradecimientos}\label{agradecimientos}
+
+Este taller es parte de un esfuerzo por compartir herramientas abiertas, accesibles y colaborativas. Queremos que más personas se acerquen al mundo de los datos y la ciencia sin barreras. ¡Gracias por formar parte!
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{💬 ¿Dudas o comentarios?}\label{dudas-o-comentarios}
+
+Puedes abrir un \href{https://github.com/}{Issue} o escribirnos durante el taller.\\
+¡Estamos aquí para aprender \href{mailto:junt@s}{\nolinkurl{junt@s}}!
+
+\chapter{Introducción a Linux}\label{introducciuxf3n-a-linux}
+
+\section{Porqué aprender a usar Linux y el Shell para Bioinformática}\label{porquuxe9-aprender-a-usar-linux-y-el-shell-para-bioinformuxe1tica}
+
+\section{Sistema operativo, Linux y Shell}\label{sistema-operativo-linux-y-shell}
+
+\section{Sistema de ficheros}\label{sistema-de-ficheros}
+
+\section{Cómo accedemos al Shell}\label{cuxf3mo-accedemos-al-shell}
+
+\section{Tipos de archivos}\label{tipos-de-archivos}
+
+\chapter{Navegar en el sistema de ficheros}\label{navegar-en-el-sistema-de-ficheros}
+
+todo lo de este archivo hasta atajos en el teclado
+
+\url{https://github.com/DianaOaxaca/Introduccion_linux_para_bioinformatica/blob/main/Comandos_utiles.md}
+
+\chapter{Manejo de archivos}\label{manejo-de-archivos}
+
+\section{Código reproducible}\label{cuxf3digo-reproducible}
+
+\textbf{``Los sucesos únicos no reproducibles, no tienen importancia para la ciencia''}
+-Karl Popper, the Logic of Scientific, 1959.
+
+¿Qué se necesita para reproducir el resultado de un análisis computacional?
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Los datos:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    La fuente de donde se descargaron.
+  \item
+    La versión de la fuente asociada a ellos.
+  \end{itemize}
+\item
+  \textbf{Los programas utilizados para analizarlos:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    La versión de cada uno de los programas.
+  \item
+    Los valores de cada uno de los argumentos utilizados.
+  \end{itemize}
+\end{itemize}
+
+\textbf{Argumentos a tener en cuenta para tener buenas prácticas:}
+
+\begin{itemize}
+\tightlist
+\item
+  Actualización de bases de datos.
+\item
+  Siempre existirán excepciones que no cumplen con las suposiciones de tu código.
+\item
+  \textbf{Qué un programa genere un resultado no significa que el resultado sea correcto.}
+\item
+  Todo lo que se te puede olvidar, \textbf{¡se te va a olvidar!}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Fuente
+  \item
+    Suposiciones iniciales
+  \item
+    ¿Qué genera esa función compleja y rebuscada que parecía una joya en su momento?
+  \end{itemize}
+\end{itemize}
+
+\textbf{SIEMPRE, documenta tu código}
+
+Comienza por la organización: La estructura de directorios debe estar organizada, lo mejor es
+tener un directorio de trabajo por proyecto, los pasos del proyecto se organizarán en
+subdirectorios.
+
+La estructura de directorios propuesta para estas asesorías es:
+
+\texttt{Linux} Este es el directorio principal del proyecto.
+
+\texttt{data} En este directorio van los datos de entrada para el proyecto.
+
+\texttt{src} En este directorio van los scripts ya probados y funcionales.
+
+\texttt{results} En este directorio van los resultados generados.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Bases de datos y secuencias biológicas}\label{bases-de-datos-y-secuencias-bioluxf3gicas}
+
+\textbf{Base de datos}: Es una colección organizada de información estructurada, o datos, normalmente
+almacenados electrónicamente en un sistema informático.
+
+En bioinformática se utilizan diversas bases de datos, algunos ejemplos son:
+
+De diversos organismos:
+
+NCBI: \url{https://www.ncbi.nlm.nih.gov/}
+
+Genomas de referencia NCBI: \url{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/}
+
+ENSEMBL: \url{https://www.ensembl.org/index.html}
+
+UCSC Table Browser: \url{https://genome.ucsc.edu/cgi-bin/hgTables}
+
+Dedicadas a organismos específicos:
+
+Ecocyc
+
+Flybase
+
+Wormbase
+
+Especializadas en un tema particular:
+
+\textbf{ENCODE:} Elementos funcionales del genoma humano
+
+\textbf{RegulonDB:} Regulación transcripcional de E. coli
+
+\textbf{Pfam:} Familias proteícas
+
+\textbf{miRBase:} Secuencias de miRNA y sus blancos
+
+\textbf{Secuencias biológicas}: Archivo que contiene la secuencia de genes, genomas y/o proteínas.
+
+\textbf{Fasta}: Se compone de un identificador de la secuencia, seguido (por salto de línea) de la
+secuencia de nucleótidos o aminoácidos de un gene, genoma o proteína.
+
+\textbf{Fastq}: Normalmente se conmpone de cuatro lineas por secuencia
+
+\texttt{Line\ 1} Comienza con `@' seguido del identificador de la secuencia y una descripción opcional.
+
+\texttt{Line\ 2} La secuencia cruda nucleótidos.
+
+\texttt{Line\ 3} Comienza con un `+' opcionalmente incluye el identificador de la secuencia.
+
+\texttt{Line\ 4} Indica los valores de calidad de la secuencia, debe contener el mismo número de símbolos que el número de nucleótidos.
+
+\textbf{De anotación}: GeneBank o tabulares GFF, GTF, GFF3
+
+\textbf{Tabulares:} Una línea por cada elemento. Cada línea DEBE contener 9 campos. Los campos DEBEN estar separados por tabuladores. Todos los campos DEBEN contener un valor, los campos vacíos se denotan con '.'
+
+\texttt{seqname} Nombre del cromosoma
+
+\texttt{source} Nombre del programa que generó ese elemento
+
+\texttt{feature} Tipo de elemento
+
+\texttt{start} Posición de inicio
+
+\texttt{end} Posición de final
+
+\texttt{score} Un valor de punto flotante
+
+\texttt{strand} La cadena (+ , - )
+
+\texttt{frame} Marco de lectura
+
+\texttt{attribute} Pares tag-value, separados por coma, que proveen información
+adicional
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{\textgreater{}}\NormalTok{ID\_secuencia,metadatos }\ExtensionTok{de}\NormalTok{ identificación}
+\ExtensionTok{ATGCCCGGTAAAGGATCCCCCCTATGCCGTATAGC}
+\OperatorTok{\textgreater{}}\NormalTok{ID\_secuencia,metadatos }\ExtensionTok{de}\NormalTok{ identificación}
+\ExtensionTok{MIPEKRIIRRIQSGGCAIHCQDCSISQLCIPFTLNEHELDQLDNI}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{@SEQ\_ID}
+\ExtensionTok{GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT}
+\ExtensionTok{+}
+\ExtensionTok{!}\StringTok{\textquotesingle{}\textquotesingle{}}\ExtensionTok{*}\ErrorTok{((}\NormalTok{((}\OperatorTok{***+}\NormalTok{))}\OperatorTok{\%\%\%++}\KeywordTok{)(}\ExtensionTok{\%\%\%\%}\KeywordTok{)}\ExtensionTok{.1***{-}+*}\StringTok{\textquotesingle{}\textquotesingle{}}\KeywordTok{)}\ErrorTok{)}\ExtensionTok{**55CCF}\OperatorTok{\textgreater{}\textgreater{}\textgreater{}\textgreater{}\textgreater{}\textgreater{}}\NormalTok{CCCCCCC65}
+\end{Highlighting}
+\end{Shaded}
+
+Agunos foros para pedir ayuda:
+
+\textbf{Stackoverflow:} \url{https://stackoverflow.com/}
+
+\textbf{Biostars:} \url{https://www.biostars.org/}
+
+\textbf{Researchgate:} \url{https://www.researchgate.net/}
+
+\textbf{IAs}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Manejo de archivos}\label{manejo-de-archivos-1}
+
+\textbf{wget, curl, shasum, md5sum, diff, scp, rsync, gunzip, unzip, tar, head, tail, more, less, cat, \textgreater, \textgreater\textgreater, nano}
+
+Link para el genoma de Raoultella terrigena:
+
+\url{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/}
+Raoultella\_terrigena/representative/GCF\_012029655.1\_ASM1202965v1/
+
+Para descargar archivos a nuestra computadora desde la terminal, se requiere utilizar protocolos de transferencia, los comandos \texttt{wget} o \texttt{curl} funcionan para ello. Veámos un ejemplo:
+
+\begin{itemize}
+\item
+  Crea el directorio principal de trabajo para este proyecto y sus subdirectorios asociados.
+\item
+  Accede al directorio data
+\item
+  Descarga el genoma representativo de Raoultella terrigena de la Refseq de NCBI
+\item
+  Ahora descarga las secuencias proteícas
+\end{itemize}
+
+¿Notaste algún cambio?
+- Vuelve a descargar el genoma de Raoultella terrigena, pero ahora asegúrate de guardar la secuencia en un archivo llamado Raoultella\_terrigena.fasta.gz
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{wget}
+\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/r}
+\ExtensionTok{epresentative/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_gen}
+\ExtensionTok{omic.fna.gz}\NormalTok{ .}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Para mobaxterm}
+\FunctionTok{wget} \AttributeTok{{-}{-}no{-}check{-}certificate}
+\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/r}
+\ExtensionTok{epresentative/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_cds}
+\ExtensionTok{\_from\_genomic.fna.gz}\NormalTok{ .}
+
+\CommentTok{\#{-}{-}no{-}check{-}certificate para saltarse los certificados (MobaXterm)}
+\end{Highlighting}
+\end{Shaded}
+
+Descarga el archivo de aminoácidos de Raoultella terrigena
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{wget} \AttributeTok{{-}{-}no{-}check{-}certificate} \AttributeTok{{-}O}\NormalTok{ Raoultella\_terrigena.faa.gz}
+\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/r}
+\ExtensionTok{epresentative/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_pro}
+\ExtensionTok{tein.faa.gz}\NormalTok{ .}
+\end{Highlighting}
+\end{Shaded}
+
+¿Qué ocurrió?
+
+\texttt{curl} Realiza la misma función básica que wget , las diferencias principales son: El output lo imprime a standar output, imprime varias estadísticas útiles sobre la descarga.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{curl}
+\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/r}
+\ExtensionTok{epresentative/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_pro}
+\ExtensionTok{tein.faa.gz}\NormalTok{ .}
+
+\ExtensionTok{curl}
+\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/r}
+\ExtensionTok{epresentative/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_pro}
+\ExtensionTok{tein.faa.gz} \OperatorTok{\textgreater{}}\NormalTok{ Raoultella\_terrigena2.faa.gz}
+\end{Highlighting}
+\end{Shaded}
+
+¿Cómo comprobamos que dos archivos son idénticos? Hemos descargado dos veces la secuencia genómica de \emph{Raoultella terrigena}. Comprobemos que ambos archivos son idénticos.
+
+Prueba con \texttt{diff\ -s}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{diff}\NormalTok{ GCF\_012029655.1\_ASM1202965v1\_genomic.fna.gz Raoultella\_terrigena.fasta.gz}
+\end{Highlighting}
+\end{Shaded}
+
+¿Y si comparas el faa vs fasta?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{diff}\NormalTok{ ../data/Raoultella\_terrigena.faa.gz ../data/Raoultella\_terrigena.fasta.gz}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Redireccionamientos y evaluación de la integridad}\label{redireccionamientos-y-evaluaciuxf3n-de-la-integridad}
+
+\textbf{\texttt{\textgreater{}}} Permite direccionar un resultado a un archivo nuevo. Crea el archivo si no existe y lo sobre escribe si existe.
+
+\textbf{\texttt{\textgreater{}\textgreater{}}} Permite redireccionar un resultado en pantalla o un archivo a otro, sin remplazar o sobreescribir. Crea el archivo si no existe y agrega el nuevo contenido al final, si el archivo existe.
+
+\textbf{\texttt{shasum}} y \textbf{\texttt{md5sum}} son programas que generan una suma encriptada única para cada
+archivo.
+
+Revisemos la integridad de los archivos, descarga el archivo md5checksums.txt del directorio genomes/refseq/bacteria/Raoultella terigena de NCBI
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{curl}
+\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/r}
+\ExtensionTok{epresentative/GCF\_012029655.1\_ASM1202965v1/md5checksums.txt} \OperatorTok{\textgreater{}}
+\ExtensionTok{md5sum\_R.terrigena.txt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{shasum}\NormalTok{ Raoultella\_terrigena.fasta.gz}
+\FunctionTok{md5sum}\NormalTok{ Raoultella\_terrigena.fasta.gz}
+\FunctionTok{more}\NormalTok{ md5sum\_R.terrigena.txt}
+\end{Highlighting}
+\end{Shaded}
+
+Redireccionemos los resultados de integridad a un archivo nuevo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{md5sum}\NormalTok{ Raoultella\_terrigena.fasta.gz }\OperatorTok{\textgreater{}}
+\ExtensionTok{../resuts/R.terrigena.md5sum.check}
+
+\FunctionTok{cat}\NormalTok{ ../results/R.terrigena.msd5sum.check}
+\FunctionTok{cat}\NormalTok{ md5sum\_R.terrigena.txt }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ ../results/R.terrigena.md5sum.check}
+\FunctionTok{cat}\NormalTok{ ../results/R.terrigena.msd5sum.check}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Transferencia de archivos}\label{transferencia-de-archivos}
+
+Esta parte no la vamos a practicar porque estamos usando una interfaz gráfica con acceso al servidor, pero si no tienes esta forma de acceso es necesario usar estos comandos, asi que te dejamos el ejemplo. :)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{\textasciigrave{}}\FunctionTok{scp}\KeywordTok{\textasciigrave{}} \PreprocessorTok{[}\SpecialStringTok{FUENTE}\PreprocessorTok{][}\SpecialStringTok{DESTINO}\PreprocessorTok{]}
+\CommentTok{\#FUENTE=Nombre del archivo que quieres transferir}
+\CommentTok{\#DESTINO=Ruta de destino}
+\CommentTok{\#Ejemplo de mi computadora al servidor:}
+\FunctionTok{scp}\NormalTok{ md5sum\_R.terrigena.txt hoaxaca@132.248.220.35:/space31/PEG/hoaxaca}
+\CommentTok{\#Me pedirá el password}
+\CommentTok{\#Funciona de manera inversa si quieres bajar del servidor a tu computadora}
+\FunctionTok{scp}\NormalTok{ hoaxaca@132.248.220.35:/space31/PEG/hoaxaca/md5sum\_R.terrigena.txt .\#ojo el}
+\ExtensionTok{destino}\NormalTok{ puede ser con ruta absoluta o relativa, aquí fue relativa }\StringTok{"."}
+\CommentTok{\#También puedes usar rsync}
+\KeywordTok{\textasciigrave{}}\FunctionTok{rsync} \AttributeTok{{-}e}\NormalTok{ ssh}\KeywordTok{\textasciigrave{}} \PreprocessorTok{[}\SpecialStringTok{FUENTE}\PreprocessorTok{][}\SpecialStringTok{DESTINO}\PreprocessorTok{]}
+\CommentTok{\# {-}e ssh indica que nos conectaremos al servidor a través de una conexión de}
+\ExtensionTok{tipo}\NormalTok{ ssh}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Compresión y descompresión}\label{compresiuxf3n-y-descompresiuxf3n}
+
+Para descomprimir archivos usamos \textbf{\texttt{gunzip}}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{gunzip}\NormalTok{ Raoultella\_terrigena.fasta.gz}
+\FunctionTok{gunzip} \PreprocessorTok{*}\NormalTok{.gz}
+\end{Highlighting}
+\end{Shaded}
+
+Para comprimir usamos \textbf{\texttt{gzip}}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{gzip} \PreprocessorTok{*}\NormalTok{.f}\PreprocessorTok{*}
+\end{Highlighting}
+\end{Shaded}
+
+¿Y si quiero comprimir directorios? Para ello utilizo tar que es un método de ultra
+compresión, muy utilizada en datos genómicos. Vamos a comprimir el directorio practica1
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ ../../}
+\FunctionTok{tar}\NormalTok{ cvzf practica1.tar.gz practica1/}
+\CommentTok{\# c = crea un nuevo directorio}
+\CommentTok{\# v = muestra el progreso dde la compresión}
+\CommentTok{\# z = genera un archivo comprimido en zip (.gz)}
+\CommentTok{\# f = para indicar el nombre del archivo comprimido}
+\end{Highlighting}
+\end{Shaded}
+
+Y para descomprimir?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rm} \AttributeTok{{-}r}\NormalTok{ practica1/}
+\FunctionTok{tar} \AttributeTok{{-}xvf}\NormalTok{ practica1.tar.gz}
+\CommentTok{\# ¿qué hace el flag x?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Explorar archivos}\label{explorar-archivos}
+
+Veamos las primeras líneas del archivo de anotación .gtf del genoma de Raoultella terrigena
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#¿Y, cuál es ese, lo tenemos?}
+\BuiltInTok{cd}\NormalTok{ sesion2/test/}
+\CommentTok{\#Ahora vamos a descargar desde test a data/}
+\FunctionTok{wget} \AttributeTok{{-}O}\NormalTok{ Raoultella\_terrigena.gtf}
+\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/repre}
+\ExtensionTok{sentative/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_genomic.gtf}
+\ExtensionTok{.gz}\NormalTok{ ../data/}
+\FunctionTok{gunzip}\NormalTok{ ../data/Raoultella\_terrigena.gtf}
+\CommentTok{\#Ahora si}
+\FunctionTok{head}\NormalTok{ ../data/Raoultella\_terrigena.gtf}
+\CommentTok{\# ¿Y si quiero ver las primeras 20 lineas?}
+\FunctionTok{head} \AttributeTok{{-}n}\NormalTok{ 20 ../data/Raoultella\_terrigena.gtf}
+\end{Highlighting}
+\end{Shaded}
+
+Ahora quiero ver las últimas líneas de un archivo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tail}\NormalTok{ ../data/Raoultella\_terrigena.gtf}
+\end{Highlighting}
+\end{Shaded}
+
+Veamos el genoma
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{more}\NormalTok{ ../data/Raoultella\_terrigena.fasta}
+\CommentTok{\# Enter =\textgreater{} Navegar hacia abajo de línea en línea}
+\CommentTok{\# Espacio =\textgreater{} Navega hacia abajo de pantalla en pantalla}
+\end{Highlighting}
+\end{Shaded}
+
+Pero podemos ver archivos con algo más potente
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{less}\NormalTok{ ../data/Raoultella\_terrigena.gtf}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{\texttt{Espacio\ OR\ Enter}} =\textgreater{} Navegar hacia abajo
+
+\textbf{\texttt{b\ OR\ flecha\ arriba}} =\textgreater{} Navegar hacia arriba
+
+\textbf{\texttt{/WORD}} =\textgreater{} Búsqueda forward
+
+\textbf{\texttt{n}} =\textgreater{} Siguiente
+
+\textbf{\texttt{?WORD}} =\textgreater{} Búsqueda backward
+
+\textbf{\texttt{N}} =\textgreater{} Anterior
+
+\textbf{\texttt{G}} =\textgreater{} Ir al final del archivo
+
+\textbf{\texttt{g}} =\textgreater{} Ir al inicio del archivo
+
+\textbf{\texttt{-S}} =\textgreater{} Mostrar una línea por renglón
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Ejercicio 02}\label{ejercicio-02}
+
+Estás realizando tu proyecto con Raoultella terrigena y tu directora de tesis te pregunta si hay genes nitrogenasa ubicados en la posición 501417 o 3010433 del genoma representativo de los genomas de referencia de esta especie. Tú debes responderle si están o no en esa posición, y si no están, avisarle en qué posición se encuentran y cuántos son.
+
+\textbf{Pseudocódigo} Es la manera en la que planeas, diseñas la ruta de trabajo que usarás para responder una pregunta. Es el diseño experimental.
+
+Pseudocódigo:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Crea el directorio Practica2
+\item
+  Descarga el archivo de anotación .gff de Raoultella terrigena en el directorio correspondiente.
+\item
+  Revisa su integridad y redirecciona el resultado al directorio correspondiente
+\item
+  Descomprime el archivo de anotación
+\item
+  Navega al final del archivo
+\item
+  Navega al inicio del archivo
+\item
+  Busca el gene que inicie en la posición 501417
+\item
+  Busca el CDS que termine en la posición 3010433
+\item
+  Busca los genes nitrogenasa
+\item
+  Escribe los resultados
+\end{enumerate}
+
+\chapter{Filtrar información}\label{filtrar-informaciuxf3n}
+
+En esta sesión, exploraremos los comandos \texttt{\textbar{}}, \texttt{sort}, \texttt{cut}, \texttt{uniq}, \texttt{wc} y \texttt{grep} para analizar el genoma de \emph{Raoultella terrigena}. Estos comandos son esenciales para procesar datos en la terminal de manera eficiente.
+
+\section{Recordatorio: Comandos Básicos}\label{recordatorio-comandos-buxe1sicos}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Lista los contenidos del directorio raíz y busca si existe un directorio llamado \texttt{home} usando \texttt{less}:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ls}\NormalTok{ /}
+\FunctionTok{ls}\NormalTok{ / }\KeywordTok{|} \FunctionTok{less}
+\CommentTok{\# Resultado esperado: /home}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Lista los primeros 10 archivos del directorio raíz:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ls}\NormalTok{ / }\KeywordTok{|} \FunctionTok{head} \AttributeTok{{-}10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Lista los últimos 5 archivos del directorio raíz:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ls}\NormalTok{ / }\KeywordTok{|} \FunctionTok{tail} \AttributeTok{{-}5}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Introducción a los Comandos}\label{introducciuxf3n-a-los-comandos}
+
+\begin{itemize}
+\item
+  \textbf{Pipe (\texttt{\textbar{}})}: Permite conectar la salida de un programa con la entrada de otro, procesando datos en RAM para mayor rapidez, evitando escritura/lectura en disco. A diferencia de \texttt{\&\&}, que ejecuta comandos independientes, \texttt{\textbar{}} requiere que la salida de un comando sea la entrada del siguiente.
+\item
+  \textbf{sort}: Ordena líneas de texto.
+\item
+  \textbf{cut}: Extrae secciones de cada línea.
+\item
+  \textbf{uniq}: Filtra líneas repetidas (requiere que el archivo esté ordenado).
+\item
+  \textbf{wc}: Cuenta líneas, palabras, caracteres o bytes.
+\item
+  \textbf{grep}: Busca patrones en archivos.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Estructura de un Archivo de Anotación (GFF)}
+
+Un archivo GFF tiene las siguientes columnas:
+
+\textbf{seqname:} Nombre del cromosoma.
+
+\textbf{source:} Programa que generó el elemento.
+
+\textbf{feature:} Tipo de elemento (e.g., gene, CDS).
+
+\textbf{start:} Posición de inicio.
+
+\textbf{end:} Posición de final.
+
+\textbf{score:} Valor de punto flotante.
+
+\textbf{strand:} Cadena (+, -).
+
+\textbf{frame:} Marco de lectura.
+
+\textbf{attribute:} Pares tag-value con información adicional.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Features en el Genoma}\label{features-en-el-genoma}
+
+\textbf{Tamaño del Genoma de Raoultella terrigena}
+
+¿Qué archivo necesitamos?
+
+El archivo Raoultella\_terrigena.fasta.
+
+¿Qué comando nos ayuda?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{wc}\NormalTok{ data/Raoultella\_terrigena.fasta}
+\end{Highlighting}
+\end{Shaded}
+
+Nota: Este comando da una estimación aproximada, ya que incluye bytes del encabezado y saltos de línea.
+
+Guarda los resultados en un archivo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mkdir} \AttributeTok{{-}p}\NormalTok{ results/sesion3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{echo} \StringTok{\textquotesingle{}El genoma de Raoultella puede medir:\textquotesingle{}} \OperatorTok{\textgreater{}}\NormalTok{ results/sesion3/Raoultella\_caracteristicas.txt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{wc}\NormalTok{ data/Raoultella\_terrigena.fasta }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ results/sesion3/Raoultella\_caracteristicas.txt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Número de Cromosomas}
+
+\textbf{¿Qué archivo necesitamos?}
+
+El archivo Raoultella\_terrigena.gff.
+
+\textbf{¿Qué comando nos ayuda?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut} \AttributeTok{{-}f1}\NormalTok{ data/Raoultella\_terrigena.gff }\KeywordTok{|} \FunctionTok{head}
+\end{Highlighting}
+\end{Shaded}
+
+Nota: El resultado incluye las 8 líneas del encabezado. Para excluirlas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grep} \AttributeTok{{-}v} \StringTok{"\#"}\NormalTok{ data/Raoultella\_terrigena.gff }\KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}f1} \KeywordTok{|} \FunctionTok{sort} \KeywordTok{|} \FunctionTok{uniq}
+\end{Highlighting}
+\end{Shaded}
+
+Guarda el resultado
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{echo} \StringTok{\textquotesingle{}El genoma de Raoultella tiene un cromosoma y es\textquotesingle{}} \OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ results/sesion3/Raoultella\_caracteristicas.txt}
+\FunctionTok{grep} \AttributeTok{{-}v} \StringTok{"\#"}\NormalTok{ data/Raoultella\_terrigena.gff }\KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}f1} \KeywordTok{|} \FunctionTok{uniq} \OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ results/sesion3/Raoultella\_caracteristicas.txt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Número de features}
+
+\textbf{¿Qué archivo necesitamos?}
+
+El archivo Raoultella\_terrigena.gff.
+
+\textbf{¿Qué comandos requerimos?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut} \AttributeTok{{-}f3}\NormalTok{ data/Raoultella\_terrigena.gff }\KeywordTok{|} \FunctionTok{uniq}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Nota:} uniq requiere que las líneas estén ordenadas. Prueba:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut} \AttributeTok{{-}f3}\NormalTok{ data/Raoultella\_terrigena.gff }\KeywordTok{|} \FunctionTok{sort} \KeywordTok{|} \FunctionTok{uniq}
+\CommentTok{\# Alternativa:}
+\FunctionTok{cut} \AttributeTok{{-}f3}\NormalTok{ data/Raoultella\_terrigena.gff }\KeywordTok{|} \FunctionTok{sort} \AttributeTok{{-}u}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Número de tipos de features}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut} \AttributeTok{{-}f3}\NormalTok{ data/Raoultella\_terrigena.gff }\KeywordTok{|} \FunctionTok{sort} \AttributeTok{{-}u} \KeywordTok{|} \FunctionTok{wc} \AttributeTok{{-}l}
+\end{Highlighting}
+\end{Shaded}
+
+Quita las lineas comentadas
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Fuentes de los datos de anotación}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut} \AttributeTok{{-}f2}\NormalTok{ data/Raoultella\_terrigena.gff }\KeywordTok{|} \FunctionTok{sort} \AttributeTok{{-}u}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Número de genes y CDS
+
+\textbf{Pseudocódigo}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Acceder a la columna 3 (feature).
+\item
+  Contar ocurrencias únicas de cada elemento.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut} \AttributeTok{{-}f3}\NormalTok{ data/Raoultella\_terrigena.gff }\KeywordTok{|} \FunctionTok{sort} \KeywordTok{|} \FunctionTok{uniq} \AttributeTok{{-}c}
+\end{Highlighting}
+\end{Shaded}
+
+Para evitar contar elementos repetidos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut} \AttributeTok{{-}f3{-}5}\NormalTok{ data/Raoultella\_terrigena.gff }\KeywordTok{|} \FunctionTok{sort} \AttributeTok{{-}u} \KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}f1} \KeywordTok{|} \FunctionTok{sort} \KeywordTok{|} \FunctionTok{uniq} \AttributeTok{{-}c}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Genes por cadena}
+
+\textbf{Pseudocódigo}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Cortar las columnas feature y strand.
+\item
+  Ordenar y contar ocurrencias únicas.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut} \AttributeTok{{-}f3,7}\NormalTok{ data/Raoultella\_terrigena.gff }\KeywordTok{|} \FunctionTok{sort} \KeywordTok{|} \FunctionTok{uniq} \AttributeTok{{-}c}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Crea un archivo de anotación ordenado por cadena y por región genómica
+
+\textbf{Pseudocódigo}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Acceder a las columnas de cadena (strand) y posiciones genómicas.
+\item
+  Ordenar por cadena y luego por posición (numéricamente).
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sort} \AttributeTok{{-}k7,7} \AttributeTok{{-}k4,4n}\NormalTok{ data/Raoultella\_terrigena.gff }\OperatorTok{\textgreater{}}\NormalTok{ results/R\_terrigena\_strand.gff}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Cuántos genes hay con diferente nombre?}
+
+\textbf{Pseudocódigo}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Filtrar registros de tipo gene.
+\item
+  Acceder a la columna 9 (atributos).
+\item
+  Separar por ; y extraer nombres.
+\item
+  Contar valores únicos.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grep} \AttributeTok{{-}P} \StringTok{"\textbackslash{}tgene\textbackslash{}t"}\NormalTok{ data/Raoultella\_terrigena.gff }\KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}f9} \KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}d} \StringTok{\textquotesingle{};\textquotesingle{}} \AttributeTok{{-}f3} \KeywordTok{|} \FunctionTok{sort} \AttributeTok{{-}u} \KeywordTok{|} \FunctionTok{wc} \AttributeTok{{-}l}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Ejercicios}\label{ejercicios}
+
+\begin{itemize}
+\item
+  \textbf{1. Cuántos genes hay con distinto ID?}
+
+  \textbf{Pseudocódigo}
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \item
+    Filtrar registros de tipo gene.
+  \item
+    Acceder a la columna 9.
+  \item
+    Separar por ; y =, quedándote con el ID.
+  \item
+    Contar valores únicos.
+  \end{enumerate}
+\item
+  \textbf{2. Cuántas secuencias proteícas?}
+
+  Tip: usa el archivo de proteinas
+\item
+  \textbf{3. Cuánto mide la secuencia de la proteína WP\_000448832.1?}
+
+  \textbf{Pseudocódigo}
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \item
+    Localizar el ID \texttt{WP\_000448832.1}.
+  \item
+    Extraer la secuencia y contar caracteres.
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    Cuál es el ID del gene \texttt{fnr}
+  \end{enumerate}
+\end{itemize}
+
+\chapter{En construccion}\label{en-construccion}
+
+\chapter{En construcción}\label{en-construcciuxf3n}
+
+\chapter{En construcción también}\label{en-construcciuxf3n-tambiuxe9n}
+
+\end{document}

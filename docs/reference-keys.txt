@@ -20,7 +20,11 @@ transferencia-de-archivos
 compresión-y-descompresión
 explorar-archivos
 ejercicio-02
-en-construcción
+filtrar-información
+recordatorio-comandos-básicos
+introducción-a-los-comandos
+features-en-el-genoma
+ejercicios
 en-construccion
-en-construcción-1
+en-construcción
 en-construcción-también

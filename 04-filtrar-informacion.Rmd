@@ -1,1 +1,279 @@
-# En construcción
+# Filtrar información
+
+En esta sesión, exploraremos los comandos `|`, `sort`, `cut`, `uniq`, `wc` y `grep` para analizar el genoma de *Raoultella terrigena*. Estos comandos son esenciales para procesar datos en la terminal de manera eficiente.
+
+
+## Recordatorio: Comandos Básicos
+
+1. Lista los contenidos del directorio raíz y busca si existe un directorio llamado `home` usando `less`:
+
+```bash
+ls /
+ls / | less
+# Resultado esperado: /home
+```
+
+2. Lista los primeros 10 archivos del directorio raíz:
+
+```bash
+ls / | head -10
+```
+
+3. Lista los últimos 5 archivos del directorio raíz:
+
+```bash
+ls / | tail -5
+```
+
+## Introducción a los Comandos
+
+- **Pipe (`|`)**: Permite conectar la salida de un programa con la entrada de otro, procesando datos en RAM para mayor rapidez, evitando escritura/lectura en disco. A diferencia de `&&`, que ejecuta comandos independientes, `|` requiere que la salida de un comando sea la entrada del siguiente.
+
+- **sort**: Ordena líneas de texto.
+
+- **cut**: Extrae secciones de cada línea.
+
+- **uniq**: Filtra líneas repetidas (requiere que el archivo esté ordenado).
+
+- **wc**: Cuenta líneas, palabras, caracteres o bytes.
+
+- **grep**: Busca patrones en archivos.
+
+---
+
+**Estructura de un Archivo de Anotación (GFF)**
+
+
+Un archivo GFF tiene las siguientes columnas:
+
+**seqname:** Nombre del cromosoma.
+
+**source:** Programa que generó el elemento.
+
+**feature:** Tipo de elemento (e.g., gene, CDS).
+
+**start:** Posición de inicio.
+
+**end:** Posición de final.
+
+**score:** Valor de punto flotante.
+
+**strand:** Cadena (+, -).
+
+**frame:** Marco de lectura.
+
+**attribute:** Pares tag-value con información adicional.
+
+---
+
+## Features en el Genoma
+
+**Tamaño del Genoma de Raoultella terrigena**
+
+¿Qué archivo necesitamos? 
+
+El archivo Raoultella_terrigena.fasta.
+
+¿Qué comando nos ayuda?
+
+```bash
+wc data/Raoultella_terrigena.fasta
+```
+
+Nota: Este comando da una estimación aproximada, ya que incluye bytes del encabezado y saltos de línea.
+
+
+Guarda los resultados en un archivo:
+
+```bash
+mkdir -p results/sesion3
+```
+
+```bash
+echo 'El genoma de Raoultella puede medir:' > results/sesion3/Raoultella_caracteristicas.txt
+```
+
+```bash
+wc data/Raoultella_terrigena.fasta >> results/sesion3/Raoultella_caracteristicas.txt
+```
+---
+
+**Número de Cromosomas**
+
+
+**¿Qué archivo necesitamos?** 
+
+El archivo Raoultella_terrigena.gff.
+
+
+**¿Qué comando nos ayuda?**
+
+```bash
+cut -f1 data/Raoultella_terrigena.gff | head
+```
+
+Nota: El resultado incluye las 8 líneas del encabezado. Para excluirlas:
+
+```bash
+grep -v "#" data/Raoultella_terrigena.gff | cut -f1 | sort | uniq
+```
+
+Guarda el resultado
+
+```bash
+echo 'El genoma de Raoultella tiene un cromosoma y es' >> results/sesion3/Raoultella_caracteristicas.txt
+grep -v "#" data/Raoultella_terrigena.gff | cut -f1 | uniq >> results/sesion3/Raoultella_caracteristicas.txt
+```
+
+---
+
+
+**Número de features**
+
+
+**¿Qué archivo necesitamos?**
+
+El archivo Raoultella_terrigena.gff.
+
+**¿Qué comandos requerimos?**
+
+```bash
+cut -f3 data/Raoultella_terrigena.gff | uniq
+```
+
+**Nota:** uniq requiere que las líneas estén ordenadas. Prueba:
+
+```bash
+cut -f3 data/Raoultella_terrigena.gff | sort | uniq
+# Alternativa:
+cut -f3 data/Raoultella_terrigena.gff | sort -u
+```
+
+---
+
+**Número de tipos de features**
+
+```bash
+cut -f3 data/Raoultella_terrigena.gff | sort -u | wc -l
+```
+
+Quita las lineas comentadas
+
+
+---
+
+**Fuentes de los datos de anotación**
+
+```bash
+cut -f2 data/Raoultella_terrigena.gff | sort -u
+```
+
+---
+
+Número de genes y CDS
+
+**Pseudocódigo**
+
+1. Acceder a la columna 3 (feature).
+
+2. Contar ocurrencias únicas de cada elemento.
+
+
+```bash
+cut -f3 data/Raoultella_terrigena.gff | sort | uniq -c
+```
+
+Para evitar contar elementos repetidos:
+
+```bash
+cut -f3-5 data/Raoultella_terrigena.gff | sort -u | cut -f1 | sort | uniq -c
+```
+
+---
+
+**Genes por cadena**
+
+
+**Pseudocódigo**
+
+1. Cortar las columnas feature y strand.
+
+
+2. Ordenar y contar ocurrencias únicas.
+
+```bash
+cut -f3,7 data/Raoultella_terrigena.gff | sort | uniq -c
+```
+
+---
+
+Crea un archivo de anotación ordenado por cadena y por región genómica
+
+
+**Pseudocódigo**
+
+1. Acceder a las columnas de cadena (strand) y posiciones genómicas.
+
+
+2. Ordenar por cadena y luego por posición (numéricamente).
+
+
+```bash
+sort -k7,7 -k4,4n data/Raoultella_terrigena.gff > results/R_terrigena_strand.gff
+```
+
+---
+
+**Cuántos genes hay con diferente nombre?**
+
+
+**Pseudocódigo**
+
+1. Filtrar registros de tipo gene.
+
+
+2. Acceder a la columna 9 (atributos).
+
+3. Separar por ; y extraer nombres.
+
+4. Contar valores únicos.
+
+
+```bash
+grep -P "\tgene\t" data/Raoultella_terrigena.gff | cut -f9 | cut -d ';' -f3 | sort -u | wc -l
+```
+
+---
+
+## Ejercicios
+
+- **1. Cuántos genes hay con distinto ID?**
+
+  **Pseudocódigo**
+  
+  1. Filtrar registros de tipo gene.
+  
+  2. Acceder a la columna 9.
+  
+  3. Separar por ; y =, quedándote con el ID.
+  
+  4. Contar valores únicos.
+  
+  
+
+- **2. Cuántas secuencias proteícas?**
+
+  Tip: usa el archivo de proteinas
+  
+
+
+- **3. Cuánto mide la secuencia de la proteína WP_000448832.1?**
+
+  **Pseudocódigo**
+  
+  1. Localizar el ID `WP_000448832.1`.
+  
+  2. Extraer la secuencia y contar caracteres.
+
+
+- 4. Cuál es el ID del gene `fnr` 

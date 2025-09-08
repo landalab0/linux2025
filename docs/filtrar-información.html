@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 5 Filtrar información | Introducción a Linux para Bioinformática</title>
+  <meta name="description" content="Material para el taller de Introducción a Linux para Bioinformática" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 5 Filtrar información | Introducción a Linux para Bioinformática" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/LandaLab.jpeg" />
+  <meta property="og:description" content="Material para el taller de Introducción a Linux para Bioinformática" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 5 Filtrar información | Introducción a Linux para Bioinformática" />
+  
+  <meta name="twitter:description" content="Material para el taller de Introducción a Linux para Bioinformática" />
+  <meta name="twitter:image" content="/images/LandaLab.jpeg" />
+
+<meta name="author" content="LandaLab" />
+
+
+<meta name="date" content="2025-09-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="manejo-de-archivos.html"/>
+<link rel="next" href="en-construccion.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">LandaLab</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 🧪 Bienvenid@s</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#sobre-el-taller"><i class="fa fa-check"></i><b>1.1</b> 📚 Sobre el taller</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#qué-aprenderás"><i class="fa fa-check"></i><b>1.2</b> 🧰 ¿Qué aprenderás?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#plataforma"><i class="fa fa-check"></i><b>1.3</b> 🌐 Plataforma</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#agradecimientos"><i class="fa fa-check"></i><b>1.4</b> 🙌 Agradecimientos</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#dudas-o-comentarios"><i class="fa fa-check"></i><b>1.5</b> 💬 ¿Dudas o comentarios?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducción-a-linux.html"><a href="introducción-a-linux.html"><i class="fa fa-check"></i><b>2</b> Introducción a Linux</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción-a-linux.html"><a href="introducción-a-linux.html#porqué-aprender-a-usar-linux-y-el-shell-para-bioinformática"><i class="fa fa-check"></i><b>2.1</b> Porqué aprender a usar Linux y el Shell para Bioinformática</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción-a-linux.html"><a href="introducción-a-linux.html#sistema-operativo-linux-y-shell"><i class="fa fa-check"></i><b>2.2</b> Sistema operativo, Linux y Shell</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-linux.html"><a href="introducción-a-linux.html#sistema-de-ficheros"><i class="fa fa-check"></i><b>2.3</b> Sistema de ficheros</a></li>
+<li class="chapter" data-level="2.4" data-path="introducción-a-linux.html"><a href="introducción-a-linux.html#cómo-accedemos-al-shell"><i class="fa fa-check"></i><b>2.4</b> Cómo accedemos al Shell</a></li>
+<li class="chapter" data-level="2.5" data-path="introducción-a-linux.html"><a href="introducción-a-linux.html#tipos-de-archivos"><i class="fa fa-check"></i><b>2.5</b> Tipos de archivos</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="navegar-en-el-sistema-de-ficheros.html"><a href="navegar-en-el-sistema-de-ficheros.html"><i class="fa fa-check"></i><b>3</b> Navegar en el sistema de ficheros</a></li>
+<li class="chapter" data-level="4" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html"><i class="fa fa-check"></i><b>4</b> Manejo de archivos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#código-reproducible"><i class="fa fa-check"></i><b>4.1</b> Código reproducible</a></li>
+<li class="chapter" data-level="4.2" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#bases-de-datos-y-secuencias-biológicas"><i class="fa fa-check"></i><b>4.2</b> Bases de datos y secuencias biológicas</a></li>
+<li class="chapter" data-level="4.3" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#manejo-de-archivos-1"><i class="fa fa-check"></i><b>4.3</b> Manejo de archivos</a></li>
+<li class="chapter" data-level="4.4" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#redireccionamientos-y-evaluación-de-la-integridad"><i class="fa fa-check"></i><b>4.4</b> Redireccionamientos y evaluación de la integridad</a></li>
+<li class="chapter" data-level="4.5" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#transferencia-de-archivos"><i class="fa fa-check"></i><b>4.5</b> Transferencia de archivos</a></li>
+<li class="chapter" data-level="4.6" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#compresión-y-descompresión"><i class="fa fa-check"></i><b>4.6</b> Compresión y descompresión</a></li>
+<li class="chapter" data-level="4.7" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#explorar-archivos"><i class="fa fa-check"></i><b>4.7</b> Explorar archivos</a></li>
+<li class="chapter" data-level="4.8" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#ejercicio-02"><i class="fa fa-check"></i><b>4.8</b> Ejercicio 02</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="filtrar-información.html"><a href="filtrar-información.html"><i class="fa fa-check"></i><b>5</b> Filtrar información</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="filtrar-información.html"><a href="filtrar-información.html#recordatorio-comandos-básicos"><i class="fa fa-check"></i><b>5.1</b> Recordatorio: Comandos Básicos</a></li>
+<li class="chapter" data-level="5.2" data-path="filtrar-información.html"><a href="filtrar-información.html#introducción-a-los-comandos"><i class="fa fa-check"></i><b>5.2</b> Introducción a los Comandos</a></li>
+<li class="chapter" data-level="5.3" data-path="filtrar-información.html"><a href="filtrar-información.html#features-en-el-genoma"><i class="fa fa-check"></i><b>5.3</b> Features en el Genoma</a></li>
+<li class="chapter" data-level="5.4" data-path="filtrar-información.html"><a href="filtrar-información.html#ejercicios"><i class="fa fa-check"></i><b>5.4</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="en-construccion.html"><a href="en-construccion.html"><i class="fa fa-check"></i><b>6</b> En construccion</a></li>
+<li class="chapter" data-level="7" data-path="en-construcción.html"><a href="en-construcción.html"><i class="fa fa-check"></i><b>7</b> En construcción</a></li>
+<li class="chapter" data-level="8" data-path="en-construcción-también.html"><a href="en-construcción-también.html"><i class="fa fa-check"></i><b>8</b> En construcción también</a></li>
+<li class="divider"></li>
+<li><a href="https://landa-lab.com/" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a Linux para Bioinformática</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="filtrar-información" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> Filtrar información<a href="filtrar-información.html#filtrar-información" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>En esta sesión, exploraremos los comandos <code>|</code>, <code>sort</code>, <code>cut</code>, <code>uniq</code>, <code>wc</code> y <code>grep</code> para analizar el genoma de <em>Raoultella terrigena</em>. Estos comandos son esenciales para procesar datos en la terminal de manera eficiente.</p>
+<div id="recordatorio-comandos-básicos" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Recordatorio: Comandos Básicos<a href="filtrar-información.html#recordatorio-comandos-básicos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Lista los contenidos del directorio raíz y busca si existe un directorio llamado <code>home</code> usando <code>less</code>:</li>
+</ol>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="filtrar-información.html#cb21-1" tabindex="-1"></a><span class="fu">ls</span> /</span>
+<span id="cb21-2"><a href="filtrar-información.html#cb21-2" tabindex="-1"></a><span class="fu">ls</span> / <span class="kw">|</span> <span class="fu">less</span></span>
+<span id="cb21-3"><a href="filtrar-información.html#cb21-3" tabindex="-1"></a><span class="co"># Resultado esperado: /home</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Lista los primeros 10 archivos del directorio raíz:</li>
+</ol>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="filtrar-información.html#cb22-1" tabindex="-1"></a><span class="fu">ls</span> / <span class="kw">|</span> <span class="fu">head</span> <span class="at">-10</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Lista los últimos 5 archivos del directorio raíz:</li>
+</ol>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="filtrar-información.html#cb23-1" tabindex="-1"></a><span class="fu">ls</span> / <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-5</span></span></code></pre></div>
+</div>
+<div id="introducción-a-los-comandos" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Introducción a los Comandos<a href="filtrar-información.html#introducción-a-los-comandos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><strong>Pipe (<code>|</code>)</strong>: Permite conectar la salida de un programa con la entrada de otro, procesando datos en RAM para mayor rapidez, evitando escritura/lectura en disco. A diferencia de <code>&amp;&amp;</code>, que ejecuta comandos independientes, <code>|</code> requiere que la salida de un comando sea la entrada del siguiente.</p></li>
+<li><p><strong>sort</strong>: Ordena líneas de texto.</p></li>
+<li><p><strong>cut</strong>: Extrae secciones de cada línea.</p></li>
+<li><p><strong>uniq</strong>: Filtra líneas repetidas (requiere que el archivo esté ordenado).</p></li>
+<li><p><strong>wc</strong>: Cuenta líneas, palabras, caracteres o bytes.</p></li>
+<li><p><strong>grep</strong>: Busca patrones en archivos.</p></li>
+</ul>
+<hr />
+<p><strong>Estructura de un Archivo de Anotación (GFF)</strong></p>
+<p>Un archivo GFF tiene las siguientes columnas:</p>
+<p><strong>seqname:</strong> Nombre del cromosoma.</p>
+<p><strong>source:</strong> Programa que generó el elemento.</p>
+<p><strong>feature:</strong> Tipo de elemento (e.g., gene, CDS).</p>
+<p><strong>start:</strong> Posición de inicio.</p>
+<p><strong>end:</strong> Posición de final.</p>
+<p><strong>score:</strong> Valor de punto flotante.</p>
+<p><strong>strand:</strong> Cadena (+, -).</p>
+<p><strong>frame:</strong> Marco de lectura.</p>
+<p><strong>attribute:</strong> Pares tag-value con información adicional.</p>
+<hr />
+</div>
+<div id="features-en-el-genoma" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Features en el Genoma<a href="filtrar-información.html#features-en-el-genoma" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Tamaño del Genoma de Raoultella terrigena</strong></p>
+<p>¿Qué archivo necesitamos?</p>
+<p>El archivo Raoultella_terrigena.fasta.</p>
+<p>¿Qué comando nos ayuda?</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="filtrar-información.html#cb24-1" tabindex="-1"></a><span class="fu">wc</span> data/Raoultella_terrigena.fasta</span></code></pre></div>
+<p>Nota: Este comando da una estimación aproximada, ya que incluye bytes del encabezado y saltos de línea.</p>
+<p>Guarda los resultados en un archivo:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="filtrar-información.html#cb25-1" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> results/sesion3</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="filtrar-información.html#cb26-1" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&#39;El genoma de Raoultella puede medir:&#39;</span> <span class="op">&gt;</span> results/sesion3/Raoultella_caracteristicas.txt</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="filtrar-información.html#cb27-1" tabindex="-1"></a><span class="fu">wc</span> data/Raoultella_terrigena.fasta <span class="op">&gt;&gt;</span> results/sesion3/Raoultella_caracteristicas.txt</span></code></pre></div>
+<hr />
+<p><strong>Número de Cromosomas</strong></p>
+<p><strong>¿Qué archivo necesitamos?</strong></p>
+<p>El archivo Raoultella_terrigena.gff.</p>
+<p><strong>¿Qué comando nos ayuda?</strong></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="filtrar-información.html#cb28-1" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f1</span> data/Raoultella_terrigena.gff <span class="kw">|</span> <span class="fu">head</span></span></code></pre></div>
+<p>Nota: El resultado incluye las 8 líneas del encabezado. Para excluirlas:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="filtrar-información.html#cb29-1" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">&quot;#&quot;</span> data/Raoultella_terrigena.gff <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f1</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div>
+<p>Guarda el resultado</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="filtrar-información.html#cb30-1" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&#39;El genoma de Raoultella tiene un cromosoma y es&#39;</span> <span class="op">&gt;&gt;</span> results/sesion3/Raoultella_caracteristicas.txt</span>
+<span id="cb30-2"><a href="filtrar-información.html#cb30-2" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">&quot;#&quot;</span> data/Raoultella_terrigena.gff <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f1</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="op">&gt;&gt;</span> results/sesion3/Raoultella_caracteristicas.txt</span></code></pre></div>
+<hr />
+<p><strong>Número de features</strong></p>
+<p><strong>¿Qué archivo necesitamos?</strong></p>
+<p>El archivo Raoultella_terrigena.gff.</p>
+<p><strong>¿Qué comandos requerimos?</strong></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="filtrar-información.html#cb31-1" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3</span> data/Raoultella_terrigena.gff <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div>
+<p><strong>Nota:</strong> uniq requiere que las líneas estén ordenadas. Prueba:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="filtrar-información.html#cb32-1" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3</span> data/Raoultella_terrigena.gff <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span>
+<span id="cb32-2"><a href="filtrar-información.html#cb32-2" tabindex="-1"></a><span class="co"># Alternativa:</span></span>
+<span id="cb32-3"><a href="filtrar-información.html#cb32-3" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3</span> data/Raoultella_terrigena.gff <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span></span></code></pre></div>
+<hr />
+<p><strong>Número de tipos de features</strong></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="filtrar-información.html#cb33-1" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3</span> data/Raoultella_terrigena.gff <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div>
+<p>Quita las lineas comentadas</p>
+<hr />
+<p><strong>Fuentes de los datos de anotación</strong></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="filtrar-información.html#cb34-1" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f2</span> data/Raoultella_terrigena.gff <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span></span></code></pre></div>
+<hr />
+<p>Número de genes y CDS</p>
+<p><strong>Pseudocódigo</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Acceder a la columna 3 (feature).</p></li>
+<li><p>Contar ocurrencias únicas de cada elemento.</p></li>
+</ol>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="filtrar-información.html#cb35-1" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3</span> data/Raoultella_terrigena.gff <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span></span></code></pre></div>
+<p>Para evitar contar elementos repetidos:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="filtrar-información.html#cb36-1" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3-5</span> data/Raoultella_terrigena.gff <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f1</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span></span></code></pre></div>
+<hr />
+<p><strong>Genes por cadena</strong></p>
+<p><strong>Pseudocódigo</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Cortar las columnas feature y strand.</p></li>
+<li><p>Ordenar y contar ocurrencias únicas.</p></li>
+</ol>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="filtrar-información.html#cb37-1" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3,7</span> data/Raoultella_terrigena.gff <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span></span></code></pre></div>
+<hr />
+<p>Crea un archivo de anotación ordenado por cadena y por región genómica</p>
+<p><strong>Pseudocódigo</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Acceder a las columnas de cadena (strand) y posiciones genómicas.</p></li>
+<li><p>Ordenar por cadena y luego por posición (numéricamente).</p></li>
+</ol>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="filtrar-información.html#cb38-1" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-k7,7</span> <span class="at">-k4,4n</span> data/Raoultella_terrigena.gff <span class="op">&gt;</span> results/R_terrigena_strand.gff</span></code></pre></div>
+<hr />
+<p><strong>Cuántos genes hay con diferente nombre?</strong></p>
+<p><strong>Pseudocódigo</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Filtrar registros de tipo gene.</p></li>
+<li><p>Acceder a la columna 9 (atributos).</p></li>
+<li><p>Separar por ; y extraer nombres.</p></li>
+<li><p>Contar valores únicos.</p></li>
+</ol>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="filtrar-información.html#cb39-1" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">&quot;\tgene\t&quot;</span> data/Raoultella_terrigena.gff <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f9</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">&#39;;&#39;</span> <span class="at">-f3</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div>
+<hr />
+</div>
+<div id="ejercicios" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Ejercicios<a href="filtrar-información.html#ejercicios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><strong>1. Cuántos genes hay con distinto ID?</strong></p>
+<p><strong>Pseudocódigo</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Filtrar registros de tipo gene.</p></li>
+<li><p>Acceder a la columna 9.</p></li>
+<li><p>Separar por ; y =, quedándote con el ID.</p></li>
+<li><p>Contar valores únicos.</p></li>
+</ol></li>
+<li><p><strong>2. Cuántas secuencias proteícas?</strong></p>
+<p>Tip: usa el archivo de proteinas</p></li>
+<li><p><strong>3. Cuánto mide la secuencia de la proteína WP_000448832.1?</strong></p>
+<p><strong>Pseudocódigo</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Localizar el ID <code>WP_000448832.1</code>.</p></li>
+<li><p>Extraer la secuencia y contar caracteres.</p></li>
+</ol></li>
+<li><ol start="4" style="list-style-type: decimal">
+<li>Cuál es el ID del gene <code>fnr</code></li>
+</ol></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="manejo-de-archivos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="en-construccion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-filtrar-informacion.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>
