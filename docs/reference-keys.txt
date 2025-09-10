@@ -33,5 +33,5 @@ obtener-las-secuencias
 verificar-la-integridad-de-las-secuencias
 calcular-contenido-de-gc
 isntalar-ambientes-conda
-en-construcción
+recapitulación
 en-construcción-también
