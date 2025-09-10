@@ -120,12 +120,16 @@ secuencia de nucleótidos o aminoácidos de un gene, genoma o proteína.
 adicional
 
 
+**Secuencia FASTA**
+
 ```bash
 >ID_secuencia,metadatos de identificación
 ATGCCCGGTAAAGGATCCCCCCTATGCCGTATAGC
 >ID_secuencia,metadatos de identificación
 MIPEKRIIRRIQSGGCAIHCQDCSISQLCIPFTLNEHELDQLDNI
 ```
+
+**Secuencia Fastq **
 
 ```bash
 @SEQ_ID
@@ -151,8 +155,7 @@ Agunos foros para pedir ayuda:
 
 Link para el genoma de Raoultella terrigena:
 
-https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/
-Raoultella_terrigena/representative/GCF_012029655.1_ASM1202965v1/
+https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/
 
 Para descargar archivos a nuestra computadora desde la terminal, se requiere utilizar protocolos de transferencia, los comandos `wget` o `curl` funcionan para ello. Veámos un ejemplo:
 
@@ -168,29 +171,13 @@ Para descargar archivos a nuestra computadora desde la terminal, se requiere uti
 - Vuelve a descargar el genoma de Raoultella terrigena, pero ahora asegúrate de guardar la secuencia en un archivo llamado Raoultella_terrigena.fasta.gz
 
 ```bash
-wget
-https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r
-epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_gen
-omic.fna.gz .
+wget https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_genomic.fna.gz
 ```
 
-```bash
-#Para mobaxterm
-wget --no-check-certificate
-https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r
-epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_cds
-_from_genomic.fna.gz .
-
-#--no-check-certificate para saltarse los certificados (MobaXterm)
-```
-
-Descarga el archivo de aminoácidos de Raoultella terrigena
+Descarga el archivo de aminoácidos de Raoultella terrigena con el nombre `Raoultella_terrigena.faa.gz`
 
 ```bash
-wget --no-check-certificate -O Raoultella_terrigena.faa.gz
-https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r
-epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_pro
-tein.faa.gz .
+wget -O Raoultella_terrigena.faa.gz https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_protein.faa.gz
 ```
 
 ¿Qué ocurrió?
@@ -198,15 +185,14 @@ tein.faa.gz .
 `curl` Realiza la misma función básica que wget , las diferencias principales son: El output lo imprime a standar output, imprime varias estadísticas útiles sobre la descarga.
 
 ```bash
-curl
-https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r
-epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_pro
-tein.faa.gz .
+curl https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_protein.faa.gz
+```
 
+Con `curl`
+
+```bash
 curl
-https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r
-epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_pro
-tein.faa.gz > Raoultella_terrigena2.faa.gz
+https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_protein.faa.gz > Raoultella_terrigena2.faa.gz
 ```
 
 ¿Cómo comprobamos que dos archivos son idénticos? Hemos descargado dos veces la secuencia genómica de *Raoultella terrigena*. Comprobemos que ambos archivos son idénticos.
@@ -239,16 +225,14 @@ archivo.
 Revisemos la integridad de los archivos, descarga el archivo md5checksums.txt del directorio genomes/refseq/bacteria/Raoultella terigena de NCBI
 
 ```bash
-curl
-https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r
-epresentative/GCF_012029655.1_ASM1202965v1/md5checksums.txt >
+curl https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/md5checksums.txt >
 md5sum_R.terrigena.txt
 ```
 
 ```bash
 shasum Raoultella_terrigena.fasta.gz
 md5sum Raoultella_terrigena.fasta.gz
-more md5sum_R.terrigena.txt
+cat md5sum_R.terrigena.txt
 ```
 
 
@@ -327,32 +311,44 @@ tar -xvf practica1.tar.gz
 
 Veamos las primeras líneas del archivo de anotación .gtf del genoma de Raoultella terrigena
 
+¿Y, cuál es ese, lo tenemos?
+
+Vamos a descargarlo
+
 ```bash
-#¿Y, cuál es ese, lo tenemos?
-cd sesion2/test/
-#Ahora vamos a descargar desde test a data/
-wget -O Raoultella_terrigena.gtf
-https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/repre
-sentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_genomic.gtf
-.gz ../data/
-gunzip ../data/Raoultella_terrigena.gtf
-#Ahora si
-head ../data/Raoultella_terrigena.gtf
-# ¿Y si quiero ver las primeras 20 lineas?
-head -n 20 ../data/Raoultella_terrigena.gtf
+wget -O Raoultella_terrigena.gtf.gz
+https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_genomic.gtf.gz
+```
+
+Luego a descomprimirlo
+
+```bash
+gunzip Raoultella_terrigena.gtf.gz
+```
+
+Ahora si
+
+```bash
+head Raoultella_terrigena.gtf
+``` 
+
+¿Y si quiero ver las primeras 20 lineas?
+
+```bash
+head -n 20 Raoultella_terrigena.gtf
 ```
 
 Ahora quiero ver las últimas líneas de un archivo
 
 ```bash
-tail ../data/Raoultella_terrigena.gtf
+tail Raoultella_terrigena.gtf
 ```
 
 
 Veamos el genoma
 
 ```bash
-more ../data/Raoultella_terrigena.fasta
+more Raoultella_terrigena.fasta
 # Enter => Navegar hacia abajo de línea en línea
 # Espacio => Navega hacia abajo de pantalla en pantalla
 ```
@@ -360,8 +356,7 @@ more ../data/Raoultella_terrigena.fasta
 Pero podemos ver archivos con algo más potente
 
 ```bash
-less ../data/Raoultella_terrigena.gtf
-
+less Raoultella_terrigena.gtf
 ```
 
 **`Espacio OR Enter`** => Navegar hacia abajo
@@ -394,7 +389,7 @@ Estás realizando tu proyecto con Raoultella terrigena y tu directora de tesis t
 Pseudocódigo:
 
 
-1. Crea el directorio Practica2
+1. Crea el directorio sesion02 dentro del directorio results
 
 
 2. Descarga el archivo de anotación .gff de Raoultella terrigena en el directorio correspondiente.

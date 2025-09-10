@@ -25,6 +25,13 @@ recordatorio-comandos-básicos
 introducción-a-los-comandos
 features-en-el-genoma
 ejercicios
-en-construccion
+obtener-más-información
+descargar-secuencias-fastq
+subir-archivos-al-servidor
+filtrar-sólo-la-información-útil
+obtener-las-secuencias
+verificar-la-integridad-de-las-secuencias
+calcular-contenido-de-gc
+isntalar-ambientes-conda
 en-construcción
 en-construcción-también

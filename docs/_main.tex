@@ -120,7 +120,7 @@
 
 \title{Introducción a Linux para Bioinformática}
 \author{LandaLab}
-\date{2025-09-08}
+\date{2025-09-10}
 
 \begin{document}
 \maketitle
@@ -363,6 +363,8 @@ secuencia de nucleótidos o aminoácidos de un gene, genoma o proteína.
 \texttt{attribute} Pares tag-value, separados por coma, que proveen información
 adicional
 
+\textbf{Secuencia FASTA}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{\textgreater{}}\NormalTok{ID\_secuencia,metadatos }\ExtensionTok{de}\NormalTok{ identificación}
@@ -371,6 +373,8 @@ adicional
 \ExtensionTok{MIPEKRIIRRIQSGGCAIHCQDCSISQLCIPFTLNEHELDQLDNI}
 \end{Highlighting}
 \end{Shaded}
+
+\textbf{Secuencia Fastq }
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -399,8 +403,7 @@ Agunos foros para pedir ayuda:
 
 Link para el genoma de Raoultella terrigena:
 
-\url{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/}
-Raoultella\_terrigena/representative/GCF\_012029655.1\_ASM1202965v1/
+\url{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/}
 
 Para descargar archivos a nuestra computadora desde la terminal, se requiere utilizar protocolos de transferencia, los comandos \texttt{wget} o \texttt{curl} funcionan para ello. Veámos un ejemplo:
 
@@ -420,33 +423,15 @@ Para descargar archivos a nuestra computadora desde la terminal, se requiere uti
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{wget}
-\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/r}
-\ExtensionTok{epresentative/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_gen}
-\ExtensionTok{omic.fna.gz}\NormalTok{ .}
+\FunctionTok{wget}\NormalTok{ https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/reference/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_genomic.fna.gz}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#Para mobaxterm}
-\FunctionTok{wget} \AttributeTok{{-}{-}no{-}check{-}certificate}
-\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/r}
-\ExtensionTok{epresentative/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_cds}
-\ExtensionTok{\_from\_genomic.fna.gz}\NormalTok{ .}
-
-\CommentTok{\#{-}{-}no{-}check{-}certificate para saltarse los certificados (MobaXterm)}
-\end{Highlighting}
-\end{Shaded}
-
-Descarga el archivo de aminoácidos de Raoultella terrigena
+Descarga el archivo de aminoácidos de Raoultella terrigena con el nombre \texttt{Raoultella\_terrigena.faa.gz}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{wget} \AttributeTok{{-}{-}no{-}check{-}certificate} \AttributeTok{{-}O}\NormalTok{ Raoultella\_terrigena.faa.gz}
-\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/r}
-\ExtensionTok{epresentative/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_pro}
-\ExtensionTok{tein.faa.gz}\NormalTok{ .}
+\FunctionTok{wget} \AttributeTok{{-}O}\NormalTok{ Raoultella\_terrigena.faa.gz https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/reference/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_protein.faa.gz}
 \end{Highlighting}
 \end{Shaded}
 
@@ -456,15 +441,16 @@ Descarga el archivo de aminoácidos de Raoultella terrigena
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ExtensionTok{curl}
-\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/r}
-\ExtensionTok{epresentative/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_pro}
-\ExtensionTok{tein.faa.gz}\NormalTok{ .}
+\ExtensionTok{curl}\NormalTok{ https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/reference/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_protein.faa.gz}
+\end{Highlighting}
+\end{Shaded}
 
+Con \texttt{curl}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \ExtensionTok{curl}
-\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/r}
-\ExtensionTok{epresentative/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_pro}
-\ExtensionTok{tein.faa.gz} \OperatorTok{\textgreater{}}\NormalTok{ Raoultella\_terrigena2.faa.gz}
+\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/reference/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_protein.faa.gz} \OperatorTok{\textgreater{}}\NormalTok{ Raoultella\_terrigena2.faa.gz}
 \end{Highlighting}
 \end{Shaded}
 
@@ -501,9 +487,7 @@ Revisemos la integridad de los archivos, descarga el archivo md5checksums.txt de
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ExtensionTok{curl}
-\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/r}
-\ExtensionTok{epresentative/GCF\_012029655.1\_ASM1202965v1/md5checksums.txt} \OperatorTok{\textgreater{}}
+\ExtensionTok{curl}\NormalTok{ https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/reference/GCF\_012029655.1\_ASM1202965v1/md5checksums.txt }\OperatorTok{\textgreater{}}
 \ExtensionTok{md5sum\_R.terrigena.txt}
 \end{Highlighting}
 \end{Shaded}
@@ -512,7 +496,7 @@ Revisemos la integridad de los archivos, descarga el archivo md5checksums.txt de
 \begin{Highlighting}[]
 \ExtensionTok{shasum}\NormalTok{ Raoultella\_terrigena.fasta.gz}
 \FunctionTok{md5sum}\NormalTok{ Raoultella\_terrigena.fasta.gz}
-\FunctionTok{more}\NormalTok{ md5sum\_R.terrigena.txt}
+\FunctionTok{cat}\NormalTok{ md5sum\_R.terrigena.txt}
 \end{Highlighting}
 \end{Shaded}
 
@@ -604,20 +588,38 @@ Y para descomprimir?
 
 Veamos las primeras líneas del archivo de anotación .gtf del genoma de Raoultella terrigena
 
+¿Y, cuál es ese, lo tenemos?
+
+Vamos a descargarlo
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#¿Y, cuál es ese, lo tenemos?}
-\BuiltInTok{cd}\NormalTok{ sesion2/test/}
-\CommentTok{\#Ahora vamos a descargar desde test a data/}
-\FunctionTok{wget} \AttributeTok{{-}O}\NormalTok{ Raoultella\_terrigena.gtf}
-\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/repre}
-\ExtensionTok{sentative/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_genomic.gtf}
-\ExtensionTok{.gz}\NormalTok{ ../data/}
-\FunctionTok{gunzip}\NormalTok{ ../data/Raoultella\_terrigena.gtf}
-\CommentTok{\#Ahora si}
-\FunctionTok{head}\NormalTok{ ../data/Raoultella\_terrigena.gtf}
-\CommentTok{\# ¿Y si quiero ver las primeras 20 lineas?}
-\FunctionTok{head} \AttributeTok{{-}n}\NormalTok{ 20 ../data/Raoultella\_terrigena.gtf}
+\FunctionTok{wget} \AttributeTok{{-}O}\NormalTok{ Raoultella\_terrigena.gtf.gz}
+\ExtensionTok{https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/reference/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_genomic.gtf.gz}
+\end{Highlighting}
+\end{Shaded}
+
+Luego a descomprimirlo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{gunzip}\NormalTok{ Raoultella\_terrigena.gtf.gz}
+\end{Highlighting}
+\end{Shaded}
+
+Ahora si
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{ Raoultella\_terrigena.gtf}
+\end{Highlighting}
+\end{Shaded}
+
+¿Y si quiero ver las primeras 20 lineas?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head} \AttributeTok{{-}n}\NormalTok{ 20 Raoultella\_terrigena.gtf}
 \end{Highlighting}
 \end{Shaded}
 
@@ -625,7 +627,7 @@ Ahora quiero ver las últimas líneas de un archivo
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{tail}\NormalTok{ ../data/Raoultella\_terrigena.gtf}
+\FunctionTok{tail}\NormalTok{ Raoultella\_terrigena.gtf}
 \end{Highlighting}
 \end{Shaded}
 
@@ -633,7 +635,7 @@ Veamos el genoma
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{more}\NormalTok{ ../data/Raoultella\_terrigena.fasta}
+\FunctionTok{more}\NormalTok{ Raoultella\_terrigena.fasta}
 \CommentTok{\# Enter =\textgreater{} Navegar hacia abajo de línea en línea}
 \CommentTok{\# Espacio =\textgreater{} Navega hacia abajo de pantalla en pantalla}
 \end{Highlighting}
@@ -643,7 +645,7 @@ Pero podemos ver archivos con algo más potente
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{less}\NormalTok{ ../data/Raoultella\_terrigena.gtf}
+\FunctionTok{less}\NormalTok{ Raoultella\_terrigena.gtf}
 \end{Highlighting}
 \end{Shaded}
 
@@ -678,7 +680,7 @@ Pseudocódigo:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Crea el directorio Practica2
+  Crea el directorio sesion02 dentro del directorio results
 \item
   Descarga el archivo de anotación .gff de Raoultella terrigena en el directorio correspondiente.
 \item
@@ -1049,7 +1051,402 @@ Crea un archivo de anotación ordenado por cadena y por región genómica
   \end{enumerate}
 \end{itemize}
 
-\chapter{En construccion}\label{en-construccion}
+\chapter{Obtener más información}\label{obtener-muxe1s-informaciuxf3n}
+
+En esta sesión, exploraremos los comandos \texttt{sed}, \texttt{tr} y ciclos \texttt{for}. Además aprenderemos a crear ambientes de conda e instalar programas dentro de este.
+
+\section{Descargar secuencias fastq}\label{descargar-secuencias-fastq}
+
+\subsection{Subir archivos al servidor}\label{subir-archivos-al-servidor}
+
+Trabajaremos con datos de amplicones de la región V3-V4 del 16S rRNA de muestras tres tiempos de fermentación del pulque, estos se obtuvieron con una plataforma ILLUMINA MiSeq (2 x 300 pb) y están en formato FASTQ. Los datos fueron depositados en NCBI y ENA bajo el BioProject \textbf{PRJEB13870} del artículo \textbf{\href{https://www.sciencedirect.com/science/article/pii/S0944501320304614\#sec0010}{Deep microbial community profiling along the fermentation process of pulque, a biocultural resource of Mexico}}.
+
+Vamos a descargar el reporte del BioProject para obtener las ligas de descarga de cada librería, descarguemos el archivo tsv del reporte que se encuentra en la siguiente liga:
+
+\url{https://www.ebi.ac.uk/ena/browser/view/PRJNA556980}
+
+Ve a la terminal de tu computadora y sitúate en el directorio en donde se descargó el reporte.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ \textasciitilde{}/Downloads/}
+\FunctionTok{ls}\NormalTok{ \textasciitilde{}/Downloads/reporte.txt}
+\end{Highlighting}
+\end{Shaded}
+
+El reporte que descargamos nos servirá para obtener los archivos \textbf{fastq} de cada librería secuenciada, pero necesitamos tenerlos en el servidor y no en nuestra máquina local. Así que vamos a subir el reporte al servidor.
+
+Con \textbf{\texttt{scp}} podemos hacer copias de la computadora al servidor y visceversa.
+
+Sitúate en la terminal de tu máquina local, justo en el directorio donde se encuentra el archivo que acabamos de descargar:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Para subir archivos}
+\FunctionTok{scp} \AttributeTok{{-}P}\NormalTok{ 7915 reporte.txt }\PreprocessorTok{[}\SpecialStringTok{USUARIO}\PreprocessorTok{]}\NormalTok{@IP:/ruta/data}
+
+\CommentTok{\#Para descargar archivos}
+\CommentTok{\#scp {-}P 7915 [USUARIO]@132.248.15.30:/botete/[USUARIO]/amplicones/data/[archivo] .}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Filtrar sólo la información útil}\label{filtrar-suxf3lo-la-informaciuxf3n-uxfatil}
+
+\begin{itemize}
+\tightlist
+\item[$\boxtimes$]
+  Ahora regresa a la terminal del servidor y lista el contenido del directorio \texttt{data}
+\end{itemize}
+
+Podemos ver que el reporte se aloja en este directorio.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{less} \AttributeTok{{-}S}\NormalTok{ reporte.txt}
+\end{Highlighting}
+\end{Shaded}
+
+Podemos notar que contiene la información de todas las librerías que se secuenciaron en el proyecto, sin embargo, a nosotros sólo nos interesan los que son de amplicones del 16S rRNA. Así que nos quedaremos sólo con esta información.
+
+¿Cuántas de estas corresponden a its?
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item[$\boxtimes$]
+  Averigua en la ayuda de grep que hacen las banderas \texttt{-\/-color} \texttt{-c} \texttt{-v}
+\end{itemize}
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grep} \AttributeTok{{-}{-}color} \StringTok{\textquotesingle{}its\textquotesingle{}}\NormalTok{ data/reporte.txt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grep} \AttributeTok{{-}c} \StringTok{\textquotesingle{}its\textquotesingle{}}\NormalTok{ data/reporte.txt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grep} \AttributeTok{{-}v} \StringTok{\textquotesingle{}its\textquotesingle{}}\NormalTok{ data/reporte.txt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grep} \AttributeTok{{-}c} \AttributeTok{{-}v} \StringTok{\textquotesingle{}its\textquotesingle{}}\NormalTok{ data/reporte.txt}
+\end{Highlighting}
+\end{Shaded}
+
+La información que necesitamos para descargar los fastq son: el nombre de la muestra y la liga de descarga. Esta información se encuentra en las columnas \texttt{experiment\_title} y \texttt{fastq\_ftp}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut} \AttributeTok{{-}f3,6}\NormalTok{ reporte.txt}
+\end{Highlighting}
+\end{Shaded}
+
+Recordemos especificar el delimitador de las columnas usando la bandera \texttt{-d}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut} \AttributeTok{{-}f3,6}\NormalTok{ reporte.txt}\KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}d}\StringTok{\textquotesingle{} \textquotesingle{}} \AttributeTok{{-}f4{-}7} \KeywordTok{|} \FunctionTok{grep} \AttributeTok{{-}v} \StringTok{\textquotesingle{}its\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+:o Ahora si contiene sólo la información de las librerías del 16S, sin embargo aún nos falta un poco\ldots{}
+Si recordamos, cada librería está pareada, si notamos el contenido de la columna 2 veremos que hay dos ligas de descarga separadas por un \texttt{;} así que necesitamos obtener cada liga por separado.
+
+\textbf{\texttt{sed}} nos ayuda a sustituir patrones de texto o caracteres.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut} \AttributeTok{{-}f3,6}\NormalTok{ reporte.txt}\KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}d}\StringTok{\textquotesingle{} \textquotesingle{}} \AttributeTok{{-}f4{-}7} \KeywordTok{|} \FunctionTok{grep} \AttributeTok{{-}v} \StringTok{\textquotesingle{}its\textquotesingle{}} \KeywordTok{|} \FunctionTok{sed} \StringTok{\textquotesingle{}s/;/\textbackslash{}n\textbackslash{}t/g\textquotesingle{}} \KeywordTok{|} \FunctionTok{grep} \AttributeTok{{-}v} \StringTok{\textquotesingle{}experiment\textquotesingle{}} \OperatorTok{\textgreater{}}\NormalTok{ data/reporte\_16S.txt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Obtener las secuencias}\label{obtener-las-secuencias}
+
+Recordemos que \textbf{\texttt{wget}} permite descargar archivos de la web al servidor o a la máquina local.
+
+Pero como son varios los archivos que necesitamos, haremos un \emph{ciclo for} que nos ayude a optimizar esta tarea.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ fq }\KeywordTok{in} \VariableTok{$(}\FunctionTok{cut} \AttributeTok{{-}f2}\NormalTok{ data/reporte\_16S.txt}\VariableTok{)}\KeywordTok{;} \ControlFlowTok{do} \FunctionTok{wget} \VariableTok{$fq}\NormalTok{ data/}\KeywordTok{;} \ControlFlowTok{done}
+\end{Highlighting}
+\end{Shaded}
+
+Lista el contenido de tu directorio data, ¿qué contiene?
+
+\subsection{Verificar la integridad de las secuencias}\label{verificar-la-integridad-de-las-secuencias}
+
+Obtengamos el identificador md5 desde el reporte de los datos
+
+Con \textbf{\texttt{tr}} podemos cambiar carácteres:
+
+\begin{itemize}
+\tightlist
+\item
+  Traducir un caracter a otro
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{echo "este es un ejemplo" | tr \textquotesingle{}e\textquotesingle{} \textquotesingle{}a\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Podemos especificar rangos de caracteres
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{echo "este es un ejemplo" | tr a{-}z A{-}Z }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  O clases de caracteres
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{echo} \StringTok{"este es un ejemplo"} \KeywordTok{|} \FunctionTok{tr} \PreprocessorTok{[}\SpecialStringTok{:lower:}\PreprocessorTok{]} \PreprocessorTok{[}\SpecialStringTok{:upper:}\PreprocessorTok{]} 
+\end{Highlighting}
+\end{Shaded}
+
+Veamos \ldots{}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cut} \AttributeTok{{-}f3,5}\NormalTok{ reporte.txt }\KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}d}\StringTok{\textquotesingle{} \textquotesingle{}} \AttributeTok{{-}f4{-}7} \KeywordTok{|} \FunctionTok{grep} \AttributeTok{{-}v} \StringTok{\textquotesingle{}its\textquotesingle{}} \KeywordTok{|} \ExtensionTok{tr}\StringTok{\textquotesingle{};\textquotesingle{}} \StringTok{\textquotesingle{}\textbackslash{}n\textquotesingle{}} \KeywordTok{|} \FunctionTok{grep} \AttributeTok{{-}v} \StringTok{\textquotesingle{}experiment\textquotesingle{}} \KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}f2}
+\end{Highlighting}
+\end{Shaded}
+
+Ahora generemos el identificador de los datos que ya descargamos
+
+Entra al directorio data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{md5sum}\NormalTok{ SRR9849602\_1.fastq.gz}
+\end{Highlighting}
+\end{Shaded}
+
+Pero otra vez son muchos, hagamos un ciclo for para esto:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ gz }\KeywordTok{in} \VariableTok{$(}\FunctionTok{ls} \PreprocessorTok{*}\NormalTok{.gz}\VariableTok{)}\KeywordTok{;} \ControlFlowTok{do} \FunctionTok{md5sum} \VariableTok{$gz} \KeywordTok{;} \ControlFlowTok{done}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Nota:} También podríamos descargar todos los archivos de un BioProject de NCBI
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#fastq{-}dump {-}{-}split{-}files SRR1234567}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Calcular contenido de GC}\label{calcular-contenido-de-gc}
+
+Calcula el porcentaje de GC del gene nifH de \emph{Raoultella terrigena}. (Se suma la cantidad de G + C y se divide entre la longitud de la secuencia)
+
+Descargar el archivo de genes del genoma representativo de \emph{Raoultella terrigena}
+
+Algoritmo:
+
+\begin{itemize}
+\tightlist
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Obtener el archivo de secuencias codificantes de \emph{R. terrigena}
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    Obtener la secuencia del gene nifH
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    Calcular la longitud de la secuencia
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    Calcular el contenido de GC
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \setcounter{enumi}{4}
+  \tightlist
+  \item
+    Calcular el porcentaje de GC del gene nifH
+  \end{enumerate}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Obtener el archivo de secuencias codificantes de \emph{R. terrigena}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{wget} \AttributeTok{{-}O}\NormalTok{ Raoultella\_terrigena.cds.gz https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella\_terrigena/reference/GCF\_012029655.1\_ASM1202965v1/GCF\_012029655.1\_ASM1202965v1\_cds\_from\_genomic.fna.gz data/}
+\end{Highlighting}
+\end{Shaded}
+
+No olvides descomprimir
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Obtener la secuencia del gene nifH
+\end{enumerate}
+
+2.1 identificar al gene de interés
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grep}\NormalTok{ nifH data/Raoultella\_terrigena.cds }
+\end{Highlighting}
+\end{Shaded}
+
+2.2 Definir como obtendré la secuencia, hay varias formas, propongo una muy fácil, con \textbf{seqtk}.
+
+Pero como no tenemos seqtk pues vamos a instalarlo \ldots{} Ve a la sección de instalción
+
+2.2.1 Obtener el identificador de la secuencia sin caracteres especiales
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grep}\NormalTok{ nifH data/Raoultella\_terrigena.cds }\KeywordTok{|} \FunctionTok{sed} \StringTok{\textquotesingle{}s/\textgreater{}//g\textquotesingle{}} \OperatorTok{\textgreater{}}\NormalTok{ results/nif\_headers.txt}
+\end{Highlighting}
+\end{Shaded}
+
+2.2.2 Obtener la secuencia
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{seqtk}\NormalTok{ subseq data/Raoultella\_terrigena.cds results/nif\_headers.txt }\OperatorTok{\textgreater{}}\NormalTok{ results/nif.fasta}
+\end{Highlighting}
+\end{Shaded}
+
+Ahora si, revisa el contenido del archivo que generamos
+
+3.1 Calcular la longitud de la secuencia
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grep} \AttributeTok{{-}v} \StringTok{\textquotesingle{}\textgreater{}\textquotesingle{}}\NormalTok{ results/nifH.fasta }\KeywordTok{|} \FunctionTok{tr} \AttributeTok{{-}d} \StringTok{\textquotesingle{}\textbackslash{}n\textquotesingle{}} \KeywordTok{|} \FunctionTok{wc} \AttributeTok{{-}c} \OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ results/GC\_nifH.txt}
+\end{Highlighting}
+\end{Shaded}
+
+3.2 Calcular el contenido de GC
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grep} \AttributeTok{{-}v} \StringTok{\textquotesingle{}\textgreater{}\textquotesingle{}}\NormalTok{ results/nifH.fasta }\KeywordTok{|} \FunctionTok{tr} \AttributeTok{{-}d} \StringTok{\textquotesingle{}\textbackslash{}n\textquotesingle{}} \KeywordTok{|} \FunctionTok{tr} \PreprocessorTok{[}\SpecialStringTok{CG}\PreprocessorTok{]} \StringTok{\textquotesingle{}\textbackslash{}n\textquotesingle{}} \KeywordTok{|} \FunctionTok{wc}
+\end{Highlighting}
+\end{Shaded}
+
+Comprobemos con el de AT
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grep} \AttributeTok{{-}v} \StringTok{\textquotesingle{}\textgreater{}\textquotesingle{}}\NormalTok{ results/nifH.fasta }\KeywordTok{|} \FunctionTok{tr} \AttributeTok{{-}d} \StringTok{\textquotesingle{}\textbackslash{}n\textquotesingle{}} \KeywordTok{|} \FunctionTok{tr} \PreprocessorTok{[}\SpecialStringTok{AT}\PreprocessorTok{]} \StringTok{\textquotesingle{}\textbackslash{}n\textquotesingle{}} \KeywordTok{|} \FunctionTok{wc}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Isntalar ambientes conda}\label{isntalar-ambientes-conda}
+
+Usaremos \textbf{conda} que es la herramienta más común para la gestión de entornos de software y paquetes en bioinformática.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{conda}\NormalTok{ create }\AttributeTok{{-}{-}name}\NormalTok{ seqtk\_env seqtk }\AttributeTok{{-}c}\NormalTok{ bioconda }\AttributeTok{{-}y}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{conda\ create}: Este comando inicia el proceso de creación de un nuevo ambiente.
+
+\texttt{-\/-name\ seqtk\_env}: Asigna el nombre seqtk\_env al nuevo ambiente. Se puede cambiar el nombre.
+
+\texttt{seqtk}: Es el nombre del programa que queremos instalar. Conda buscará el paquete seqtk en sus canales.
+
+\texttt{-c\ bioconda}: Le indica a Conda que busque el paquete en el canal de Bioconda, que es el repositorio principal para herramientas de bioinformática.
+
+\texttt{-y}: Responde ``sí'' automáticamente a la pregunta de confirmación, lo que hace que el proceso sea más rápido y no interactivo.
+
+\textbf{\texttt{seqtk}} es una herramienta de línea de comandos de propósito general para el procesamiento de secuencias en formato FASTA/Q. Fue desarrollado por Heng Li y es conocido por ser muy rápido y eficiente, lo que lo hace ideal para tareas como:
+
+\begin{itemize}
+\item
+  Convertir archivos de FASTA a FASTQ y viceversa.
+\item
+  Muestrear (submuestrear) secuencias aleatoriamente.
+\item
+  Filtrar secuencias por longitud.
+\end{itemize}
+
+Es una herramienta fundamental en muchos flujos de trabajo de bioinformática para la manipulación de datos de secuenciación de alto rendimiento.
+
+\begin{itemize}
+\tightlist
+\item
+  Una vez que el comando anterior termine de ejecutarse, el ambiente estará creado. Para empezar a usar \texttt{seqtk}, necesitas activar el ambiente:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{conda}\NormalTok{ activate seqtk\_env}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Cuando termines de usar seqtk, puedes desactivar el ambiente para volver a tu entorno base:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{conda}\NormalTok{ deactivate}
+\end{Highlighting}
+\end{Shaded}
 
 \chapter{En construcción}\label{en-construcciuxf3n}
 

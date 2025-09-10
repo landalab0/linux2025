@@ -1,0 +1,291 @@
+# Obtener más información
+
+En esta sesión, exploraremos los comandos `sed`, `tr` y ciclos `for`. Además aprenderemos a crear ambientes de conda e instalar programas dentro de este.
+
+
+## Descargar secuencias fastq
+
+### Subir archivos al servidor
+
+Trabajaremos con datos de amplicones de la región V3-V4 del 16S rRNA de muestras tres tiempos de fermentación del pulque, estos se obtuvieron con una plataforma ILLUMINA MiSeq (2 x 300 pb) y están en formato FASTQ. Los datos fueron depositados en NCBI y ENA bajo el BioProject **PRJEB13870** del artículo **[Deep microbial community profiling along the fermentation process of pulque, a biocultural resource of Mexico](https://www.sciencedirect.com/science/article/pii/S0944501320304614#sec0010)**. 
+
+Vamos a descargar el reporte del BioProject para obtener las ligas de descarga de cada librería, descarguemos el archivo tsv del reporte que se encuentra en la siguiente liga:
+
+https://www.ebi.ac.uk/ena/browser/view/PRJNA556980
+
+Ve a la terminal de tu computadora y sitúate en el directorio en donde se descargó el reporte.
+
+```bash
+cd ~/Downloads/
+ls ~/Downloads/reporte.txt
+```
+
+El reporte que descargamos nos servirá para obtener los archivos **fastq** de cada librería secuenciada, pero necesitamos tenerlos en el servidor y no en nuestra máquina local. Así que vamos a subir el reporte al servidor.
+
+Con **`scp`** podemos hacer copias de la computadora al servidor y visceversa.
+
+Sitúate en la terminal de tu máquina local, justo en el directorio donde se encuentra el archivo que acabamos de descargar:
+
+```bash
+#Para subir archivos
+scp -P 7915 reporte.txt [USUARIO]@IP:/ruta/data
+
+#Para descargar archivos
+#scp -P 7915 [USUARIO]@132.248.15.30:/botete/[USUARIO]/amplicones/data/[archivo] .
+```
+
+---
+
+### Filtrar sólo la información útil
+
+- [x] Ahora regresa a la terminal del servidor y lista el contenido del directorio `data`
+
+Podemos ver que el reporte se aloja en este directorio. 
+
+
+```bash
+less -S reporte.txt
+```
+
+Podemos notar que contiene la información de todas las librerías que se secuenciaron en el proyecto, sin embargo, a nosotros sólo nos interesan los que son de amplicones del 16S rRNA. Así que nos quedaremos sólo con esta información.
+
+¿Cuántas de estas corresponden a its?
+
+
+ > - [x] Averigua en la ayuda de grep que hacen las banderas `--color` `-c` `-v`
+
+```bash
+grep --color 'its' data/reporte.txt
+```
+
+```bash
+grep -c 'its' data/reporte.txt
+```
+
+```bash
+grep -v 'its' data/reporte.txt
+```
+
+```bash
+grep -c -v 'its' data/reporte.txt
+```
+
+La información que necesitamos para descargar los fastq son: el nombre de la muestra y la liga de descarga. Esta información se encuentra en las columnas `experiment_title` y `fastq_ftp`
+
+
+```bash
+cut -f3,6 reporte.txt
+```
+
+Recordemos especificar el delimitador de las columnas usando la bandera `-d`. 
+
+
+```bash
+cut -f3,6 reporte.txt| cut -d' ' -f4-7 | grep -v 'its'
+```
+
+:o Ahora si contiene sólo la información de las librerías del 16S, sin embargo aún nos falta un poco... 
+Si recordamos, cada librería está pareada, si notamos el contenido de la columna 2 veremos que hay dos ligas de descarga separadas por un `;` así que necesitamos obtener cada liga por separado.
+
+
+**`sed`** nos ayuda a sustituir patrones de texto o caracteres.
+
+
+```bash
+cut -f3,6 reporte.txt| cut -d' ' -f4-7 | grep -v 'its' | sed 's/;/\n\t/g' | grep -v 'experiment' > data/reporte_16S.txt
+```
+
+---
+
+### Obtener las secuencias
+
+Recordemos que **`wget`** permite descargar archivos de la web al servidor o a la máquina local.
+
+
+Pero como son varios los archivos que necesitamos, haremos un *ciclo for* que nos ayude a optimizar esta tarea.
+
+
+```bash
+for fq in $(cut -f2 data/reporte_16S.txt); do wget $fq data/; done
+```
+
+Lista el contenido de tu directorio data, ¿qué contiene?
+
+
+### Verificar la integridad de las secuencias
+
+
+Obtengamos el identificador md5 desde el reporte de los datos
+
+Con **`tr`** podemos cambiar carácteres:
+
+- Traducir un caracter a otro
+
+```shell
+echo "este es un ejemplo" | tr 'e' 'a'
+```
+
+- Podemos especificar rangos de caracteres 
+
+```shell
+echo "este es un ejemplo" | tr a-z A-Z 
+```
+
+- O clases de caracteres 
+
+```sh
+echo "este es un ejemplo" | tr [:lower:] [:upper:] 
+```
+
+Veamos ...
+
+```bash
+cut -f3,5 reporte.txt | cut -d' ' -f4-7 | grep -v 'its' | tr';' '\n' | grep -v 'experiment' | cut -f2
+```
+
+Ahora generemos el identificador de los datos que ya descargamos
+
+Entra al directorio data
+
+```bash
+md5sum SRR9849602_1.fastq.gz
+```
+
+Pero otra vez son muchos, hagamos un ciclo for para esto:
+
+```bash
+for gz in $(ls *.gz); do md5sum $gz ; done
+```
+
+
+**Nota:** También podríamos descargar todos los archivos de un BioProject de NCBI 
+
+```shell
+#fastq-dump --split-files SRR1234567
+```
+
+## Calcular contenido de GC
+
+Calcula el porcentaje de GC del gene nifH de *Raoultella terrigena*.  (Se suma la cantidad de G + C y se divide entre la longitud de la secuencia)
+
+Descargar el archivo de genes del genoma representativo de *Raoultella terrigena*
+
+Algoritmo: 
+
+* 1. Obtener el archivo de secuencias codificantes de *R. terrigena*
+* 2. Obtener la secuencia del gene nifH
+* 3. Calcular la longitud de la secuencia
+* 4. Calcular el contenido de GC
+* 5. Calcular el porcentaje de GC del gene nifH
+
+
+1. Obtener el archivo de secuencias codificantes de *R. terrigena*
+
+```bash
+wget -O Raoultella_terrigena.cds.gz https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_cds_from_genomic.fna.gz data/
+```
+No olvides descomprimir
+
+
+2. Obtener la secuencia del gene nifH
+
+2.1 identificar al gene de interés
+
+```bash
+grep nifH data/Raoultella_terrigena.cds 
+```
+
+2.2 Definir como obtendré la secuencia, hay varias formas, propongo una muy fácil, con **seqtk**.
+
+Pero como no tenemos seqtk pues vamos a instalarlo ... Ve a la sección de instalción
+
+
+2.2.1 Obtener el identificador de la secuencia sin caracteres especiales
+
+```bash
+grep nifH data/Raoultella_terrigena.cds | sed 's/>//g' > results/nif_headers.txt
+```
+
+2.2.2 Obtener la secuencia
+
+```bash
+seqtk subseq data/Raoultella_terrigena.cds results/nif_headers.txt > results/nif.fasta
+```
+
+Ahora si, revisa el contenido del archivo que generamos
+
+
+3.1 Calcular la longitud de la secuencia 
+
+```bash
+grep -v '>' results/nifH.fasta | tr -d '\n' | wc -c >> results/GC_nifH.txt
+```
+
+3.2 Calcular el contenido de GC
+
+```bash
+grep -v '>' results/nifH.fasta | tr -d '\n' | tr [CG] '\n' | wc
+```
+
+Comprobemos con el de AT
+
+```bash
+grep -v '>' results/nifH.fasta | tr -d '\n' | tr [AT] '\n' | wc
+```
+
+
+## Isntalar ambientes conda
+
+Usaremos **conda** que es la herramienta más común para la gestión de entornos de software y paquetes en bioinformática.
+
+
+
+```bash
+conda create --name seqtk_env seqtk -c bioconda -y
+```
+
+`conda create`: Este comando inicia el proceso de creación de un nuevo ambiente.
+
+
+`--name seqtk_env`: Asigna el nombre seqtk_env al nuevo ambiente. Se puede cambiar el nombre.
+
+
+`seqtk`: Es el nombre del programa que queremos instalar. Conda buscará el paquete seqtk en sus canales.
+
+
+`-c bioconda`: Le indica a Conda que busque el paquete en el canal de Bioconda, que es el repositorio principal para herramientas de bioinformática.
+
+
+`-y`: Responde "sí" automáticamente a la pregunta de confirmación, lo que hace que el proceso sea más rápido y no interactivo.
+
+
+
+**`seqtk`** es una herramienta de línea de comandos de propósito general para el procesamiento de secuencias en formato FASTA/Q. Fue desarrollado por Heng Li y es conocido por ser muy rápido y eficiente, lo que lo hace ideal para tareas como:
+
+- Convertir archivos de FASTA a FASTQ y viceversa.
+
+- Muestrear (submuestrear) secuencias aleatoriamente.
+
+- Filtrar secuencias por longitud.
+
+Es una herramienta fundamental en muchos flujos de trabajo de bioinformática para la manipulación de datos de secuenciación de alto rendimiento.
+
+
+* Una vez que el comando anterior termine de ejecutarse, el ambiente estará creado. Para empezar a usar `seqtk`, necesitas activar el ambiente:
+
+
+```bash
+conda activate seqtk_env
+```
+
+* Cuando termines de usar seqtk, puedes desactivar el ambiente para volver a tu entorno base:
+
+```bash
+conda deactivate
+```
+
+
+
+
+
+

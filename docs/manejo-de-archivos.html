@@ -23,7 +23,7 @@
 <meta name="author" content="LandaLab" />
 
 
-<meta name="date" content="2025-09-08" />
+<meta name="date" content="2025-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -175,7 +175,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="filtrar-información.html"><a href="filtrar-información.html#features-en-el-genoma"><i class="fa fa-check"></i><b>5.3</b> Features en el Genoma</a></li>
 <li class="chapter" data-level="5.4" data-path="filtrar-información.html"><a href="filtrar-información.html#ejercicios"><i class="fa fa-check"></i><b>5.4</b> Ejercicios</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="en-construccion.html"><a href="en-construccion.html"><i class="fa fa-check"></i><b>6</b> En construccion</a></li>
+<li class="chapter" data-level="6" data-path="obtener-más-información.html"><a href="obtener-más-información.html"><i class="fa fa-check"></i><b>6</b> Obtener más información</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="obtener-más-información.html"><a href="obtener-más-información.html#descargar-secuencias-fastq"><i class="fa fa-check"></i><b>6.1</b> Descargar secuencias fastq</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="obtener-más-información.html"><a href="obtener-más-información.html#subir-archivos-al-servidor"><i class="fa fa-check"></i><b>6.1.1</b> Subir archivos al servidor</a></li>
+<li class="chapter" data-level="6.1.2" data-path="obtener-más-información.html"><a href="obtener-más-información.html#filtrar-sólo-la-información-útil"><i class="fa fa-check"></i><b>6.1.2</b> Filtrar sólo la información útil</a></li>
+<li class="chapter" data-level="6.1.3" data-path="obtener-más-información.html"><a href="obtener-más-información.html#obtener-las-secuencias"><i class="fa fa-check"></i><b>6.1.3</b> Obtener las secuencias</a></li>
+<li class="chapter" data-level="6.1.4" data-path="obtener-más-información.html"><a href="obtener-más-información.html#verificar-la-integridad-de-las-secuencias"><i class="fa fa-check"></i><b>6.1.4</b> Verificar la integridad de las secuencias</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="obtener-más-información.html"><a href="obtener-más-información.html#calcular-contenido-de-gc"><i class="fa fa-check"></i><b>6.2</b> Calcular contenido de GC</a></li>
+<li class="chapter" data-level="6.3" data-path="obtener-más-información.html"><a href="obtener-más-información.html#isntalar-ambientes-conda"><i class="fa fa-check"></i><b>6.3</b> Isntalar ambientes conda</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="en-construcción.html"><a href="en-construcción.html"><i class="fa fa-check"></i><b>7</b> En construcción</a></li>
 <li class="chapter" data-level="8" data-path="en-construcción-también.html"><a href="en-construcción-también.html"><i class="fa fa-check"></i><b>8</b> En construcción también</a></li>
 <li class="divider"></li>
@@ -279,10 +290,12 @@ secuencia de nucleótidos o aminoácidos de un gene, genoma o proteína.</p>
 <p><code>frame</code> Marco de lectura</p>
 <p><code>attribute</code> Pares tag-value, separados por coma, que proveen información
 adicional</p>
+<p><strong>Secuencia FASTA</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="manejo-de-archivos.html#cb1-1" tabindex="-1"></a><span class="op">&gt;</span>ID_secuencia,metadatos <span class="ex">de</span> identificación</span>
 <span id="cb1-2"><a href="manejo-de-archivos.html#cb1-2" tabindex="-1"></a><span class="ex">ATGCCCGGTAAAGGATCCCCCCTATGCCGTATAGC</span></span>
 <span id="cb1-3"><a href="manejo-de-archivos.html#cb1-3" tabindex="-1"></a><span class="op">&gt;</span>ID_secuencia,metadatos <span class="ex">de</span> identificación</span>
 <span id="cb1-4"><a href="manejo-de-archivos.html#cb1-4" tabindex="-1"></a><span class="ex">MIPEKRIIRRIQSGGCAIHCQDCSISQLCIPFTLNEHELDQLDNI</span></span></code></pre></div>
+<p><strong>Secuencia Fastq </strong></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="manejo-de-archivos.html#cb2-1" tabindex="-1"></a><span class="ex">@SEQ_ID</span></span>
 <span id="cb2-2"><a href="manejo-de-archivos.html#cb2-2" tabindex="-1"></a><span class="ex">GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT</span></span>
 <span id="cb2-3"><a href="manejo-de-archivos.html#cb2-3" tabindex="-1"></a><span class="ex">+</span></span>
@@ -298,8 +311,7 @@ adicional</p>
 <h2><span class="header-section-number">4.3</span> Manejo de archivos<a href="manejo-de-archivos.html#manejo-de-archivos-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>wget, curl, shasum, md5sum, diff, scp, rsync, gunzip, unzip, tar, head, tail, more, less, cat, &gt;, &gt;&gt;, nano</strong></p>
 <p>Link para el genoma de Raoultella terrigena:</p>
-<p><a href="https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/" class="uri">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/</a>
-Raoultella_terrigena/representative/GCF_012029655.1_ASM1202965v1/</p>
+<p><a href="https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/" class="uri">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/</a></p>
 <p>Para descargar archivos a nuestra computadora desde la terminal, se requiere utilizar protocolos de transferencia, los comandos <code>wget</code> o <code>curl</code> funcionan para ello. Veámos un ejemplo:</p>
 <ul>
 <li><p>Crea el directorio principal de trabajo para este proyecto y sus subdirectorios asociados.</p></li>
@@ -309,33 +321,15 @@ Raoultella_terrigena/representative/GCF_012029655.1_ASM1202965v1/</p>
 </ul>
 <p>¿Notaste algún cambio?
 - Vuelve a descargar el genoma de Raoultella terrigena, pero ahora asegúrate de guardar la secuencia en un archivo llamado Raoultella_terrigena.fasta.gz</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="manejo-de-archivos.html#cb3-1" tabindex="-1"></a><span class="fu">wget</span></span>
-<span id="cb3-2"><a href="manejo-de-archivos.html#cb3-2" tabindex="-1"></a><span class="ex">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r</span></span>
-<span id="cb3-3"><a href="manejo-de-archivos.html#cb3-3" tabindex="-1"></a><span class="ex">epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_gen</span></span>
-<span id="cb3-4"><a href="manejo-de-archivos.html#cb3-4" tabindex="-1"></a><span class="ex">omic.fna.gz</span> .</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="manejo-de-archivos.html#cb4-1" tabindex="-1"></a><span class="co">#Para mobaxterm</span></span>
-<span id="cb4-2"><a href="manejo-de-archivos.html#cb4-2" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span></span>
-<span id="cb4-3"><a href="manejo-de-archivos.html#cb4-3" tabindex="-1"></a><span class="ex">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r</span></span>
-<span id="cb4-4"><a href="manejo-de-archivos.html#cb4-4" tabindex="-1"></a><span class="ex">epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_cds</span></span>
-<span id="cb4-5"><a href="manejo-de-archivos.html#cb4-5" tabindex="-1"></a><span class="ex">_from_genomic.fna.gz</span> .</span>
-<span id="cb4-6"><a href="manejo-de-archivos.html#cb4-6" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="manejo-de-archivos.html#cb4-7" tabindex="-1"></a><span class="co">#--no-check-certificate para saltarse los certificados (MobaXterm)</span></span></code></pre></div>
-<p>Descarga el archivo de aminoácidos de Raoultella terrigena</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="manejo-de-archivos.html#cb5-1" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">-O</span> Raoultella_terrigena.faa.gz</span>
-<span id="cb5-2"><a href="manejo-de-archivos.html#cb5-2" tabindex="-1"></a><span class="ex">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r</span></span>
-<span id="cb5-3"><a href="manejo-de-archivos.html#cb5-3" tabindex="-1"></a><span class="ex">epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_pro</span></span>
-<span id="cb5-4"><a href="manejo-de-archivos.html#cb5-4" tabindex="-1"></a><span class="ex">tein.faa.gz</span> .</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="manejo-de-archivos.html#cb3-1" tabindex="-1"></a><span class="fu">wget</span> https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_genomic.fna.gz</span></code></pre></div>
+<p>Descarga el archivo de aminoácidos de Raoultella terrigena con el nombre <code>Raoultella_terrigena.faa.gz</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="manejo-de-archivos.html#cb4-1" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> Raoultella_terrigena.faa.gz https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_protein.faa.gz</span></code></pre></div>
 <p>¿Qué ocurrió?</p>
 <p><code>curl</code> Realiza la misma función básica que wget , las diferencias principales son: El output lo imprime a standar output, imprime varias estadísticas útiles sobre la descarga.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="manejo-de-archivos.html#cb5-1" tabindex="-1"></a><span class="ex">curl</span> https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_protein.faa.gz</span></code></pre></div>
+<p>Con <code>curl</code></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="manejo-de-archivos.html#cb6-1" tabindex="-1"></a><span class="ex">curl</span></span>
-<span id="cb6-2"><a href="manejo-de-archivos.html#cb6-2" tabindex="-1"></a><span class="ex">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r</span></span>
-<span id="cb6-3"><a href="manejo-de-archivos.html#cb6-3" tabindex="-1"></a><span class="ex">epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_pro</span></span>
-<span id="cb6-4"><a href="manejo-de-archivos.html#cb6-4" tabindex="-1"></a><span class="ex">tein.faa.gz</span> .</span>
-<span id="cb6-5"><a href="manejo-de-archivos.html#cb6-5" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="manejo-de-archivos.html#cb6-6" tabindex="-1"></a><span class="ex">curl</span></span>
-<span id="cb6-7"><a href="manejo-de-archivos.html#cb6-7" tabindex="-1"></a><span class="ex">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r</span></span>
-<span id="cb6-8"><a href="manejo-de-archivos.html#cb6-8" tabindex="-1"></a><span class="ex">epresentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_pro</span></span>
-<span id="cb6-9"><a href="manejo-de-archivos.html#cb6-9" tabindex="-1"></a><span class="ex">tein.faa.gz</span> <span class="op">&gt;</span> Raoultella_terrigena2.faa.gz</span></code></pre></div>
+<span id="cb6-2"><a href="manejo-de-archivos.html#cb6-2" tabindex="-1"></a><span class="ex">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_protein.faa.gz</span> <span class="op">&gt;</span> Raoultella_terrigena2.faa.gz</span></code></pre></div>
 <p>¿Cómo comprobamos que dos archivos son idénticos? Hemos descargado dos veces la secuencia genómica de <em>Raoultella terrigena</em>. Comprobemos que ambos archivos son idénticos.</p>
 <p>Prueba con <code>diff -s</code></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="manejo-de-archivos.html#cb7-1" tabindex="-1"></a><span class="fu">diff</span> GCF_012029655.1_ASM1202965v1_genomic.fna.gz Raoultella_terrigena.fasta.gz</span></code></pre></div>
@@ -350,13 +344,11 @@ Raoultella_terrigena/representative/GCF_012029655.1_ASM1202965v1/</p>
 <p><strong><code>shasum</code></strong> y <strong><code>md5sum</code></strong> son programas que generan una suma encriptada única para cada
 archivo.</p>
 <p>Revisemos la integridad de los archivos, descarga el archivo md5checksums.txt del directorio genomes/refseq/bacteria/Raoultella terigena de NCBI</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="manejo-de-archivos.html#cb9-1" tabindex="-1"></a><span class="ex">curl</span></span>
-<span id="cb9-2"><a href="manejo-de-archivos.html#cb9-2" tabindex="-1"></a><span class="ex">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/r</span></span>
-<span id="cb9-3"><a href="manejo-de-archivos.html#cb9-3" tabindex="-1"></a><span class="ex">epresentative/GCF_012029655.1_ASM1202965v1/md5checksums.txt</span> <span class="op">&gt;</span></span>
-<span id="cb9-4"><a href="manejo-de-archivos.html#cb9-4" tabindex="-1"></a><span class="ex">md5sum_R.terrigena.txt</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="manejo-de-archivos.html#cb9-1" tabindex="-1"></a><span class="ex">curl</span> https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/md5checksums.txt <span class="op">&gt;</span></span>
+<span id="cb9-2"><a href="manejo-de-archivos.html#cb9-2" tabindex="-1"></a><span class="ex">md5sum_R.terrigena.txt</span></span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="manejo-de-archivos.html#cb10-1" tabindex="-1"></a><span class="ex">shasum</span> Raoultella_terrigena.fasta.gz</span>
 <span id="cb10-2"><a href="manejo-de-archivos.html#cb10-2" tabindex="-1"></a><span class="fu">md5sum</span> Raoultella_terrigena.fasta.gz</span>
-<span id="cb10-3"><a href="manejo-de-archivos.html#cb10-3" tabindex="-1"></a><span class="fu">more</span> md5sum_R.terrigena.txt</span></code></pre></div>
+<span id="cb10-3"><a href="manejo-de-archivos.html#cb10-3" tabindex="-1"></a><span class="fu">cat</span> md5sum_R.terrigena.txt</span></code></pre></div>
 <p>Redireccionemos los resultados de integridad a un archivo nuevo.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="manejo-de-archivos.html#cb11-1" tabindex="-1"></a><span class="fu">md5sum</span> Raoultella_terrigena.fasta.gz <span class="op">&gt;</span></span>
 <span id="cb11-2"><a href="manejo-de-archivos.html#cb11-2" tabindex="-1"></a><span class="ex">../resuts/R.terrigena.md5sum.check</span></span>
@@ -408,26 +400,24 @@ compresión, muy utilizada en datos genómicos. Vamos a comprimir el directorio 
 <div id="explorar-archivos" class="section level2 hasAnchor" number="4.7">
 <h2><span class="header-section-number">4.7</span> Explorar archivos<a href="manejo-de-archivos.html#explorar-archivos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Veamos las primeras líneas del archivo de anotación .gtf del genoma de Raoultella terrigena</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="manejo-de-archivos.html#cb17-1" tabindex="-1"></a><span class="co">#¿Y, cuál es ese, lo tenemos?</span></span>
-<span id="cb17-2"><a href="manejo-de-archivos.html#cb17-2" tabindex="-1"></a><span class="bu">cd</span> sesion2/test/</span>
-<span id="cb17-3"><a href="manejo-de-archivos.html#cb17-3" tabindex="-1"></a><span class="co">#Ahora vamos a descargar desde test a data/</span></span>
-<span id="cb17-4"><a href="manejo-de-archivos.html#cb17-4" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> Raoultella_terrigena.gtf</span>
-<span id="cb17-5"><a href="manejo-de-archivos.html#cb17-5" tabindex="-1"></a><span class="ex">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/repre</span></span>
-<span id="cb17-6"><a href="manejo-de-archivos.html#cb17-6" tabindex="-1"></a><span class="ex">sentative/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_genomic.gtf</span></span>
-<span id="cb17-7"><a href="manejo-de-archivos.html#cb17-7" tabindex="-1"></a><span class="ex">.gz</span> ../data/</span>
-<span id="cb17-8"><a href="manejo-de-archivos.html#cb17-8" tabindex="-1"></a><span class="fu">gunzip</span> ../data/Raoultella_terrigena.gtf</span>
-<span id="cb17-9"><a href="manejo-de-archivos.html#cb17-9" tabindex="-1"></a><span class="co">#Ahora si</span></span>
-<span id="cb17-10"><a href="manejo-de-archivos.html#cb17-10" tabindex="-1"></a><span class="fu">head</span> ../data/Raoultella_terrigena.gtf</span>
-<span id="cb17-11"><a href="manejo-de-archivos.html#cb17-11" tabindex="-1"></a><span class="co"># ¿Y si quiero ver las primeras 20 lineas?</span></span>
-<span id="cb17-12"><a href="manejo-de-archivos.html#cb17-12" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 20 ../data/Raoultella_terrigena.gtf</span></code></pre></div>
+<p>¿Y, cuál es ese, lo tenemos?</p>
+<p>Vamos a descargarlo</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="manejo-de-archivos.html#cb17-1" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> Raoultella_terrigena.gtf.gz</span>
+<span id="cb17-2"><a href="manejo-de-archivos.html#cb17-2" tabindex="-1"></a><span class="ex">https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_genomic.gtf.gz</span></span></code></pre></div>
+<p>Luego a descomprimirlo</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="manejo-de-archivos.html#cb18-1" tabindex="-1"></a><span class="fu">gunzip</span> Raoultella_terrigena.gtf.gz</span></code></pre></div>
+<p>Ahora si</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="manejo-de-archivos.html#cb19-1" tabindex="-1"></a><span class="fu">head</span> Raoultella_terrigena.gtf</span></code></pre></div>
+<p>¿Y si quiero ver las primeras 20 lineas?</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="manejo-de-archivos.html#cb20-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 20 Raoultella_terrigena.gtf</span></code></pre></div>
 <p>Ahora quiero ver las últimas líneas de un archivo</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="manejo-de-archivos.html#cb18-1" tabindex="-1"></a><span class="fu">tail</span> ../data/Raoultella_terrigena.gtf</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="manejo-de-archivos.html#cb21-1" tabindex="-1"></a><span class="fu">tail</span> Raoultella_terrigena.gtf</span></code></pre></div>
 <p>Veamos el genoma</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="manejo-de-archivos.html#cb19-1" tabindex="-1"></a><span class="fu">more</span> ../data/Raoultella_terrigena.fasta</span>
-<span id="cb19-2"><a href="manejo-de-archivos.html#cb19-2" tabindex="-1"></a><span class="co"># Enter =&gt; Navegar hacia abajo de línea en línea</span></span>
-<span id="cb19-3"><a href="manejo-de-archivos.html#cb19-3" tabindex="-1"></a><span class="co"># Espacio =&gt; Navega hacia abajo de pantalla en pantalla</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="manejo-de-archivos.html#cb22-1" tabindex="-1"></a><span class="fu">more</span> Raoultella_terrigena.fasta</span>
+<span id="cb22-2"><a href="manejo-de-archivos.html#cb22-2" tabindex="-1"></a><span class="co"># Enter =&gt; Navegar hacia abajo de línea en línea</span></span>
+<span id="cb22-3"><a href="manejo-de-archivos.html#cb22-3" tabindex="-1"></a><span class="co"># Espacio =&gt; Navega hacia abajo de pantalla en pantalla</span></span></code></pre></div>
 <p>Pero podemos ver archivos con algo más potente</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="manejo-de-archivos.html#cb20-1" tabindex="-1"></a><span class="fu">less</span> ../data/Raoultella_terrigena.gtf</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="manejo-de-archivos.html#cb23-1" tabindex="-1"></a><span class="fu">less</span> Raoultella_terrigena.gtf</span></code></pre></div>
 <p><strong><code>Espacio OR Enter</code></strong> =&gt; Navegar hacia abajo</p>
 <p><strong><code>b OR flecha arriba</code></strong> =&gt; Navegar hacia arriba</p>
 <p><strong><code>/WORD</code></strong> =&gt; Búsqueda forward</p>
@@ -445,7 +435,7 @@ compresión, muy utilizada en datos genómicos. Vamos a comprimir el directorio 
 <p><strong>Pseudocódigo</strong> Es la manera en la que planeas, diseñas la ruta de trabajo que usarás para responder una pregunta. Es el diseño experimental.</p>
 <p>Pseudocódigo:</p>
 <ol style="list-style-type: decimal">
-<li><p>Crea el directorio Practica2</p></li>
+<li><p>Crea el directorio sesion02 dentro del directorio results</p></li>
 <li><p>Descarga el archivo de anotación .gff de Raoultella terrigena en el directorio correspondiente.</p></li>
 <li><p>Revisa su integridad y redirecciona el resultado al directorio correspondiente</p></li>
 <li><p>Descomprime el archivo de anotación</p></li>

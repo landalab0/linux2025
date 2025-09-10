@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 6 Obtener más información | Introducción a Linux para Bioinformática</title>
+  <meta name="description" content="Material para el taller de Introducción a Linux para Bioinformática" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 6 Obtener más información | Introducción a Linux para Bioinformática" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/LandaLab.jpeg" />
+  <meta property="og:description" content="Material para el taller de Introducción a Linux para Bioinformática" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 6 Obtener más información | Introducción a Linux para Bioinformática" />
+  
+  <meta name="twitter:description" content="Material para el taller de Introducción a Linux para Bioinformática" />
+  <meta name="twitter:image" content="/images/LandaLab.jpeg" />
+
+<meta name="author" content="LandaLab" />
+
+
+<meta name="date" content="2025-09-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="filtrar-información.html"/>
+<link rel="next" href="en-construcción.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">LandaLab</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> 🧪 Bienvenid@s</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#sobre-el-taller"><i class="fa fa-check"></i><b>1.1</b> 📚 Sobre el taller</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#qué-aprenderás"><i class="fa fa-check"></i><b>1.2</b> 🧰 ¿Qué aprenderás?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#plataforma"><i class="fa fa-check"></i><b>1.3</b> 🌐 Plataforma</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#agradecimientos"><i class="fa fa-check"></i><b>1.4</b> 🙌 Agradecimientos</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#dudas-o-comentarios"><i class="fa fa-check"></i><b>1.5</b> 💬 ¿Dudas o comentarios?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducción-a-linux.html"><a href="introducción-a-linux.html"><i class="fa fa-check"></i><b>2</b> Introducción a Linux</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción-a-linux.html"><a href="introducción-a-linux.html#porqué-aprender-a-usar-linux-y-el-shell-para-bioinformática"><i class="fa fa-check"></i><b>2.1</b> Porqué aprender a usar Linux y el Shell para Bioinformática</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción-a-linux.html"><a href="introducción-a-linux.html#sistema-operativo-linux-y-shell"><i class="fa fa-check"></i><b>2.2</b> Sistema operativo, Linux y Shell</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-linux.html"><a href="introducción-a-linux.html#sistema-de-ficheros"><i class="fa fa-check"></i><b>2.3</b> Sistema de ficheros</a></li>
+<li class="chapter" data-level="2.4" data-path="introducción-a-linux.html"><a href="introducción-a-linux.html#cómo-accedemos-al-shell"><i class="fa fa-check"></i><b>2.4</b> Cómo accedemos al Shell</a></li>
+<li class="chapter" data-level="2.5" data-path="introducción-a-linux.html"><a href="introducción-a-linux.html#tipos-de-archivos"><i class="fa fa-check"></i><b>2.5</b> Tipos de archivos</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="navegar-en-el-sistema-de-ficheros.html"><a href="navegar-en-el-sistema-de-ficheros.html"><i class="fa fa-check"></i><b>3</b> Navegar en el sistema de ficheros</a></li>
+<li class="chapter" data-level="4" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html"><i class="fa fa-check"></i><b>4</b> Manejo de archivos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#código-reproducible"><i class="fa fa-check"></i><b>4.1</b> Código reproducible</a></li>
+<li class="chapter" data-level="4.2" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#bases-de-datos-y-secuencias-biológicas"><i class="fa fa-check"></i><b>4.2</b> Bases de datos y secuencias biológicas</a></li>
+<li class="chapter" data-level="4.3" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#manejo-de-archivos-1"><i class="fa fa-check"></i><b>4.3</b> Manejo de archivos</a></li>
+<li class="chapter" data-level="4.4" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#redireccionamientos-y-evaluación-de-la-integridad"><i class="fa fa-check"></i><b>4.4</b> Redireccionamientos y evaluación de la integridad</a></li>
+<li class="chapter" data-level="4.5" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#transferencia-de-archivos"><i class="fa fa-check"></i><b>4.5</b> Transferencia de archivos</a></li>
+<li class="chapter" data-level="4.6" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#compresión-y-descompresión"><i class="fa fa-check"></i><b>4.6</b> Compresión y descompresión</a></li>
+<li class="chapter" data-level="4.7" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#explorar-archivos"><i class="fa fa-check"></i><b>4.7</b> Explorar archivos</a></li>
+<li class="chapter" data-level="4.8" data-path="manejo-de-archivos.html"><a href="manejo-de-archivos.html#ejercicio-02"><i class="fa fa-check"></i><b>4.8</b> Ejercicio 02</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="filtrar-información.html"><a href="filtrar-información.html"><i class="fa fa-check"></i><b>5</b> Filtrar información</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="filtrar-información.html"><a href="filtrar-información.html#recordatorio-comandos-básicos"><i class="fa fa-check"></i><b>5.1</b> Recordatorio: Comandos Básicos</a></li>
+<li class="chapter" data-level="5.2" data-path="filtrar-información.html"><a href="filtrar-información.html#introducción-a-los-comandos"><i class="fa fa-check"></i><b>5.2</b> Introducción a los Comandos</a></li>
+<li class="chapter" data-level="5.3" data-path="filtrar-información.html"><a href="filtrar-información.html#features-en-el-genoma"><i class="fa fa-check"></i><b>5.3</b> Features en el Genoma</a></li>
+<li class="chapter" data-level="5.4" data-path="filtrar-información.html"><a href="filtrar-información.html#ejercicios"><i class="fa fa-check"></i><b>5.4</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="obtener-más-información.html"><a href="obtener-más-información.html"><i class="fa fa-check"></i><b>6</b> Obtener más información</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="obtener-más-información.html"><a href="obtener-más-información.html#descargar-secuencias-fastq"><i class="fa fa-check"></i><b>6.1</b> Descargar secuencias fastq</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="obtener-más-información.html"><a href="obtener-más-información.html#subir-archivos-al-servidor"><i class="fa fa-check"></i><b>6.1.1</b> Subir archivos al servidor</a></li>
+<li class="chapter" data-level="6.1.2" data-path="obtener-más-información.html"><a href="obtener-más-información.html#filtrar-sólo-la-información-útil"><i class="fa fa-check"></i><b>6.1.2</b> Filtrar sólo la información útil</a></li>
+<li class="chapter" data-level="6.1.3" data-path="obtener-más-información.html"><a href="obtener-más-información.html#obtener-las-secuencias"><i class="fa fa-check"></i><b>6.1.3</b> Obtener las secuencias</a></li>
+<li class="chapter" data-level="6.1.4" data-path="obtener-más-información.html"><a href="obtener-más-información.html#verificar-la-integridad-de-las-secuencias"><i class="fa fa-check"></i><b>6.1.4</b> Verificar la integridad de las secuencias</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="obtener-más-información.html"><a href="obtener-más-información.html#calcular-contenido-de-gc"><i class="fa fa-check"></i><b>6.2</b> Calcular contenido de GC</a></li>
+<li class="chapter" data-level="6.3" data-path="obtener-más-información.html"><a href="obtener-más-información.html#isntalar-ambientes-conda"><i class="fa fa-check"></i><b>6.3</b> Isntalar ambientes conda</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="en-construcción.html"><a href="en-construcción.html"><i class="fa fa-check"></i><b>7</b> En construcción</a></li>
+<li class="chapter" data-level="8" data-path="en-construcción-también.html"><a href="en-construcción-también.html"><i class="fa fa-check"></i><b>8</b> En construcción también</a></li>
+<li class="divider"></li>
+<li><a href="https://landa-lab.com/" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a Linux para Bioinformática</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="obtener-más-información" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Capítulo 6</span> Obtener más información<a href="obtener-más-información.html#obtener-más-información" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>En esta sesión, exploraremos los comandos <code>sed</code>, <code>tr</code> y ciclos <code>for</code>. Además aprenderemos a crear ambientes de conda e instalar programas dentro de este.</p>
+<div id="descargar-secuencias-fastq" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Descargar secuencias fastq<a href="obtener-más-información.html#descargar-secuencias-fastq" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="subir-archivos-al-servidor" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Subir archivos al servidor<a href="obtener-más-información.html#subir-archivos-al-servidor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Trabajaremos con datos de amplicones de la región V3-V4 del 16S rRNA de muestras tres tiempos de fermentación del pulque, estos se obtuvieron con una plataforma ILLUMINA MiSeq (2 x 300 pb) y están en formato FASTQ. Los datos fueron depositados en NCBI y ENA bajo el BioProject <strong>PRJEB13870</strong> del artículo <strong><a href="https://www.sciencedirect.com/science/article/pii/S0944501320304614#sec0010">Deep microbial community profiling along the fermentation process of pulque, a biocultural resource of Mexico</a></strong>.</p>
+<p>Vamos a descargar el reporte del BioProject para obtener las ligas de descarga de cada librería, descarguemos el archivo tsv del reporte que se encuentra en la siguiente liga:</p>
+<p><a href="https://www.ebi.ac.uk/ena/browser/view/PRJNA556980" class="uri">https://www.ebi.ac.uk/ena/browser/view/PRJNA556980</a></p>
+<p>Ve a la terminal de tu computadora y sitúate en el directorio en donde se descargó el reporte.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="obtener-más-información.html#cb43-1" tabindex="-1"></a><span class="bu">cd</span> ~/Downloads/</span>
+<span id="cb43-2"><a href="obtener-más-información.html#cb43-2" tabindex="-1"></a><span class="fu">ls</span> ~/Downloads/reporte.txt</span></code></pre></div>
+<p>El reporte que descargamos nos servirá para obtener los archivos <strong>fastq</strong> de cada librería secuenciada, pero necesitamos tenerlos en el servidor y no en nuestra máquina local. Así que vamos a subir el reporte al servidor.</p>
+<p>Con <strong><code>scp</code></strong> podemos hacer copias de la computadora al servidor y visceversa.</p>
+<p>Sitúate en la terminal de tu máquina local, justo en el directorio donde se encuentra el archivo que acabamos de descargar:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="obtener-más-información.html#cb44-1" tabindex="-1"></a><span class="co">#Para subir archivos</span></span>
+<span id="cb44-2"><a href="obtener-más-información.html#cb44-2" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-P</span> 7915 reporte.txt <span class="pp">[</span><span class="ss">USUARIO</span><span class="pp">]</span>@IP:/ruta/data</span>
+<span id="cb44-3"><a href="obtener-más-información.html#cb44-3" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="obtener-más-información.html#cb44-4" tabindex="-1"></a><span class="co">#Para descargar archivos</span></span>
+<span id="cb44-5"><a href="obtener-más-información.html#cb44-5" tabindex="-1"></a><span class="co">#scp -P 7915 [USUARIO]@132.248.15.30:/botete/[USUARIO]/amplicones/data/[archivo] .</span></span></code></pre></div>
+<hr />
+</div>
+<div id="filtrar-sólo-la-información-útil" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Filtrar sólo la información útil<a href="obtener-más-información.html#filtrar-sólo-la-información-útil" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Ahora regresa a la terminal del servidor y lista el contenido del directorio <code>data</code></label></li>
+</ul>
+<p>Podemos ver que el reporte se aloja en este directorio.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="obtener-más-información.html#cb45-1" tabindex="-1"></a><span class="fu">less</span> <span class="at">-S</span> reporte.txt</span></code></pre></div>
+<p>Podemos notar que contiene la información de todas las librerías que se secuenciaron en el proyecto, sin embargo, a nosotros sólo nos interesan los que son de amplicones del 16S rRNA. Así que nos quedaremos sólo con esta información.</p>
+<p>¿Cuántas de estas corresponden a its?</p>
+<blockquote>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Averigua en la ayuda de grep que hacen las banderas <code>--color</code> <code>-c</code> <code>-v</code></label></li>
+</ul>
+</blockquote>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="obtener-más-información.html#cb46-1" tabindex="-1"></a><span class="fu">grep</span> <span class="at">--color</span> <span class="st">&#39;its&#39;</span> data/reporte.txt</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="obtener-más-información.html#cb47-1" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">&#39;its&#39;</span> data/reporte.txt</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb48-1"><a href="obtener-más-información.html#cb48-1" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">&#39;its&#39;</span> data/reporte.txt</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb49-1"><a href="obtener-más-información.html#cb49-1" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="at">-v</span> <span class="st">&#39;its&#39;</span> data/reporte.txt</span></code></pre></div>
+<p>La información que necesitamos para descargar los fastq son: el nombre de la muestra y la liga de descarga. Esta información se encuentra en las columnas <code>experiment_title</code> y <code>fastq_ftp</code></p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb50-1"><a href="obtener-más-información.html#cb50-1" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3,6</span> reporte.txt</span></code></pre></div>
+<p>Recordemos especificar el delimitador de las columnas usando la bandera <code>-d</code>.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb51-1"><a href="obtener-más-información.html#cb51-1" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3,6</span> reporte.txt<span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">&#39; &#39;</span> <span class="at">-f4-7</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">&#39;its&#39;</span></span></code></pre></div>
+<p>:o Ahora si contiene sólo la información de las librerías del 16S, sin embargo aún nos falta un poco…
+Si recordamos, cada librería está pareada, si notamos el contenido de la columna 2 veremos que hay dos ligas de descarga separadas por un <code>;</code> así que necesitamos obtener cada liga por separado.</p>
+<p><strong><code>sed</code></strong> nos ayuda a sustituir patrones de texto o caracteres.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="obtener-más-información.html#cb52-1" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3,6</span> reporte.txt<span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">&#39; &#39;</span> <span class="at">-f4-7</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">&#39;its&#39;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&#39;s/;/\n\t/g&#39;</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">&#39;experiment&#39;</span> <span class="op">&gt;</span> data/reporte_16S.txt</span></code></pre></div>
+<hr />
+</div>
+<div id="obtener-las-secuencias" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Obtener las secuencias<a href="obtener-más-información.html#obtener-las-secuencias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recordemos que <strong><code>wget</code></strong> permite descargar archivos de la web al servidor o a la máquina local.</p>
+<p>Pero como son varios los archivos que necesitamos, haremos un <em>ciclo for</em> que nos ayude a optimizar esta tarea.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="obtener-más-información.html#cb53-1" tabindex="-1"></a><span class="cf">for</span> fq <span class="kw">in</span> <span class="va">$(</span><span class="fu">cut</span> <span class="at">-f2</span> data/reporte_16S.txt<span class="va">)</span><span class="kw">;</span> <span class="cf">do</span> <span class="fu">wget</span> <span class="va">$fq</span> data/<span class="kw">;</span> <span class="cf">done</span></span></code></pre></div>
+<p>Lista el contenido de tu directorio data, ¿qué contiene?</p>
+</div>
+<div id="verificar-la-integridad-de-las-secuencias" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> Verificar la integridad de las secuencias<a href="obtener-más-información.html#verificar-la-integridad-de-las-secuencias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Obtengamos el identificador md5 desde el reporte de los datos</p>
+<p>Con <strong><code>tr</code></strong> podemos cambiar carácteres:</p>
+<ul>
+<li>Traducir un caracter a otro</li>
+</ul>
+<pre class="shell"><code>echo &quot;este es un ejemplo&quot; | tr &#39;e&#39; &#39;a&#39;</code></pre>
+<ul>
+<li>Podemos especificar rangos de caracteres</li>
+</ul>
+<pre class="shell"><code>echo &quot;este es un ejemplo&quot; | tr a-z A-Z </code></pre>
+<ul>
+<li>O clases de caracteres</li>
+</ul>
+<div class="sourceCode" id="cb56"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb56-1"><a href="obtener-más-información.html#cb56-1" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;este es un ejemplo&quot;</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="pp">[</span><span class="ss">:lower:</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">:upper:</span><span class="pp">]</span> </span></code></pre></div>
+<p>Veamos …</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="obtener-más-información.html#cb57-1" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3,5</span> reporte.txt <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">&#39; &#39;</span> <span class="at">-f4-7</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">&#39;its&#39;</span> <span class="kw">|</span> <span class="ex">tr</span><span class="st">&#39;;&#39;</span> <span class="st">&#39;\n&#39;</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">&#39;experiment&#39;</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f2</span></span></code></pre></div>
+<p>Ahora generemos el identificador de los datos que ya descargamos</p>
+<p>Entra al directorio data</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="obtener-más-información.html#cb58-1" tabindex="-1"></a><span class="fu">md5sum</span> SRR9849602_1.fastq.gz</span></code></pre></div>
+<p>Pero otra vez son muchos, hagamos un ciclo for para esto:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb59-1"><a href="obtener-más-información.html#cb59-1" tabindex="-1"></a><span class="cf">for</span> gz <span class="kw">in</span> <span class="va">$(</span><span class="fu">ls</span> <span class="pp">*</span>.gz<span class="va">)</span><span class="kw">;</span> <span class="cf">do</span> <span class="fu">md5sum</span> <span class="va">$gz</span> <span class="kw">;</span> <span class="cf">done</span></span></code></pre></div>
+<p><strong>Nota:</strong> También podríamos descargar todos los archivos de un BioProject de NCBI</p>
+<pre class="shell"><code>#fastq-dump --split-files SRR1234567</code></pre>
+</div>
+</div>
+<div id="calcular-contenido-de-gc" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Calcular contenido de GC<a href="obtener-más-información.html#calcular-contenido-de-gc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Calcula el porcentaje de GC del gene nifH de <em>Raoultella terrigena</em>. (Se suma la cantidad de G + C y se divide entre la longitud de la secuencia)</p>
+<p>Descargar el archivo de genes del genoma representativo de <em>Raoultella terrigena</em></p>
+<p>Algoritmo:</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>Obtener el archivo de secuencias codificantes de <em>R. terrigena</em></li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>Obtener la secuencia del gene nifH</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>Calcular la longitud de la secuencia</li>
+</ol></li>
+<li><ol start="4" style="list-style-type: decimal">
+<li>Calcular el contenido de GC</li>
+</ol></li>
+<li><ol start="5" style="list-style-type: decimal">
+<li>Calcular el porcentaje de GC del gene nifH</li>
+</ol></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Obtener el archivo de secuencias codificantes de <em>R. terrigena</em></li>
+</ol>
+<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="obtener-más-información.html#cb61-1" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> Raoultella_terrigena.cds.gz https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Raoultella_terrigena/reference/GCF_012029655.1_ASM1202965v1/GCF_012029655.1_ASM1202965v1_cds_from_genomic.fna.gz data/</span></code></pre></div>
+<p>No olvides descomprimir</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Obtener la secuencia del gene nifH</li>
+</ol>
+<p>2.1 identificar al gene de interés</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="obtener-más-información.html#cb62-1" tabindex="-1"></a><span class="fu">grep</span> nifH data/Raoultella_terrigena.cds </span></code></pre></div>
+<p>2.2 Definir como obtendré la secuencia, hay varias formas, propongo una muy fácil, con <strong>seqtk</strong>.</p>
+<p>Pero como no tenemos seqtk pues vamos a instalarlo … Ve a la sección de instalción</p>
+<p>2.2.1 Obtener el identificador de la secuencia sin caracteres especiales</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="obtener-más-información.html#cb63-1" tabindex="-1"></a><span class="fu">grep</span> nifH data/Raoultella_terrigena.cds <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&#39;s/&gt;//g&#39;</span> <span class="op">&gt;</span> results/nif_headers.txt</span></code></pre></div>
+<p>2.2.2 Obtener la secuencia</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="obtener-más-información.html#cb64-1" tabindex="-1"></a><span class="ex">seqtk</span> subseq data/Raoultella_terrigena.cds results/nif_headers.txt <span class="op">&gt;</span> results/nif.fasta</span></code></pre></div>
+<p>Ahora si, revisa el contenido del archivo que generamos</p>
+<p>3.1 Calcular la longitud de la secuencia</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="obtener-más-información.html#cb65-1" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">&#39;&gt;&#39;</span> results/nifH.fasta <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">&#39;\n&#39;</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-c</span> <span class="op">&gt;&gt;</span> results/GC_nifH.txt</span></code></pre></div>
+<p>3.2 Calcular el contenido de GC</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="obtener-más-información.html#cb66-1" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">&#39;&gt;&#39;</span> results/nifH.fasta <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">&#39;\n&#39;</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="pp">[</span><span class="ss">CG</span><span class="pp">]</span> <span class="st">&#39;\n&#39;</span> <span class="kw">|</span> <span class="fu">wc</span></span></code></pre></div>
+<p>Comprobemos con el de AT</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="obtener-más-información.html#cb67-1" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">&#39;&gt;&#39;</span> results/nifH.fasta <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">&#39;\n&#39;</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="pp">[</span><span class="ss">AT</span><span class="pp">]</span> <span class="st">&#39;\n&#39;</span> <span class="kw">|</span> <span class="fu">wc</span></span></code></pre></div>
+</div>
+<div id="isntalar-ambientes-conda" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Isntalar ambientes conda<a href="obtener-más-información.html#isntalar-ambientes-conda" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Usaremos <strong>conda</strong> que es la herramienta más común para la gestión de entornos de software y paquetes en bioinformática.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb68-1"><a href="obtener-más-información.html#cb68-1" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> seqtk_env seqtk <span class="at">-c</span> bioconda <span class="at">-y</span></span></code></pre></div>
+<p><code>conda create</code>: Este comando inicia el proceso de creación de un nuevo ambiente.</p>
+<p><code>--name seqtk_env</code>: Asigna el nombre seqtk_env al nuevo ambiente. Se puede cambiar el nombre.</p>
+<p><code>seqtk</code>: Es el nombre del programa que queremos instalar. Conda buscará el paquete seqtk en sus canales.</p>
+<p><code>-c bioconda</code>: Le indica a Conda que busque el paquete en el canal de Bioconda, que es el repositorio principal para herramientas de bioinformática.</p>
+<p><code>-y</code>: Responde “sí” automáticamente a la pregunta de confirmación, lo que hace que el proceso sea más rápido y no interactivo.</p>
+<p><strong><code>seqtk</code></strong> es una herramienta de línea de comandos de propósito general para el procesamiento de secuencias en formato FASTA/Q. Fue desarrollado por Heng Li y es conocido por ser muy rápido y eficiente, lo que lo hace ideal para tareas como:</p>
+<ul>
+<li><p>Convertir archivos de FASTA a FASTQ y viceversa.</p></li>
+<li><p>Muestrear (submuestrear) secuencias aleatoriamente.</p></li>
+<li><p>Filtrar secuencias por longitud.</p></li>
+</ul>
+<p>Es una herramienta fundamental en muchos flujos de trabajo de bioinformática para la manipulación de datos de secuenciación de alto rendimiento.</p>
+<ul>
+<li>Una vez que el comando anterior termine de ejecutarse, el ambiente estará creado. Para empezar a usar <code>seqtk</code>, necesitas activar el ambiente:</li>
+</ul>
+<div class="sourceCode" id="cb69"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb69-1"><a href="obtener-más-información.html#cb69-1" tabindex="-1"></a><span class="ex">conda</span> activate seqtk_env</span></code></pre></div>
+<ul>
+<li>Cuando termines de usar seqtk, puedes desactivar el ambiente para volver a tu entorno base:</li>
+</ul>
+<div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="obtener-más-información.html#cb70-1" tabindex="-1"></a><span class="ex">conda</span> deactivate</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="filtrar-información.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="en-construcción.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-Manejo-y-filtrado-de-archivos.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>
