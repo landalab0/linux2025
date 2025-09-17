@@ -120,7 +120,7 @@
 
 \title{Introducción a Linux para Bioinformática}
 \author{LandaLab}
-\date{2025-09-10}
+\date{2025-09-17}
 
 \begin{document}
 \maketitle
@@ -1061,7 +1061,7 @@ En esta sesión, exploraremos los comandos \texttt{sed}, \texttt{tr} y ciclos \t
 
 Trabajaremos con datos de amplicones de la región V3-V4 del 16S rRNA de muestras tres tiempos de fermentación del pulque, estos se obtuvieron con una plataforma ILLUMINA MiSeq (2 x 300 pb) y están en formato FASTQ. Los datos fueron depositados en NCBI y ENA bajo el BioProject \textbf{PRJEB13870} del artículo \textbf{\href{https://www.sciencedirect.com/science/article/pii/S0944501320304614\#sec0010}{Deep microbial community profiling along the fermentation process of pulque, a biocultural resource of Mexico}}.
 
-Vamos a descargar el reporte del BioProject para obtener las ligas de descarga de cada librería, descarguemos el archivo tsv del reporte que se encuentra en la siguiente liga:
+Vamos a descargar el reporte del BioProject para obtener las ligas de descarga de cada librería, \textbf{asegurate de que el nombre del experimento este marcado en las casillas}, descarguemos el archivo tsv del reporte que se encuentra en la siguiente liga:
 
 \url{https://www.ebi.ac.uk/ena/browser/view/PRJNA556980}
 
@@ -1167,7 +1167,7 @@ Si recordamos, cada librería está pareada, si notamos el contenido de la colum
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{cut} \AttributeTok{{-}f3,6}\NormalTok{ reporte.txt}\KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}d}\StringTok{\textquotesingle{} \textquotesingle{}} \AttributeTok{{-}f4{-}7} \KeywordTok{|} \FunctionTok{grep} \AttributeTok{{-}v} \StringTok{\textquotesingle{}its\textquotesingle{}} \KeywordTok{|} \FunctionTok{sed} \StringTok{\textquotesingle{}s/;/\textbackslash{}n\textbackslash{}t/g\textquotesingle{}} \KeywordTok{|} \FunctionTok{grep} \AttributeTok{{-}v} \StringTok{\textquotesingle{}experiment\textquotesingle{}} \OperatorTok{\textgreater{}}\NormalTok{ data/reporte\_16S.txt}
+\FunctionTok{cat}\NormalTok{ data/reporte.txt  }\KeywordTok{|} \FunctionTok{grep} \AttributeTok{{-}v} \StringTok{\textquotesingle{}its\textquotesingle{}} \KeywordTok{|}  \FunctionTok{grep} \AttributeTok{{-}v} \StringTok{\textquotesingle{}fastq\_ftp\textquotesingle{}} \KeywordTok{|} \FunctionTok{cut} \AttributeTok{{-}f5} \KeywordTok{|} \FunctionTok{sed} \StringTok{\textquotesingle{}s/;/\textbackslash{}n/g\textquotesingle{}} \KeywordTok{|} \FunctionTok{less} \AttributeTok{{-}S}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1452,7 +1452,7 @@ Es una herramienta fundamental en muchos flujos de trabajo de bioinformática pa
 
 Accede a este formulario de google y responde las preguntas
 
-\url{https://forms.gle/GpZctJHUmzhuSDuP9}
+\url{https://docs.google.com/forms/d/e/1FAIpQLSfAODGqJAMaTys2w5RmZg-KX3xWKG3t4d0ufhxlpIUya9C7nw/viewform?usp=sharing&ouid=111135442256323215026}
 
 El archivo que necesitas para contestar se encuentra en el siguiente enlace:
 

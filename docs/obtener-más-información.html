@@ -23,7 +23,7 @@
 <meta name="author" content="LandaLab" />
 
 
-<meta name="date" content="2025-09-10" />
+<meta name="date" content="2025-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -217,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="subir-archivos-al-servidor" class="section level3 hasAnchor" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Subir archivos al servidor<a href="obtener-más-información.html#subir-archivos-al-servidor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Trabajaremos con datos de amplicones de la región V3-V4 del 16S rRNA de muestras tres tiempos de fermentación del pulque, estos se obtuvieron con una plataforma ILLUMINA MiSeq (2 x 300 pb) y están en formato FASTQ. Los datos fueron depositados en NCBI y ENA bajo el BioProject <strong>PRJEB13870</strong> del artículo <strong><a href="https://www.sciencedirect.com/science/article/pii/S0944501320304614#sec0010">Deep microbial community profiling along the fermentation process of pulque, a biocultural resource of Mexico</a></strong>.</p>
-<p>Vamos a descargar el reporte del BioProject para obtener las ligas de descarga de cada librería, descarguemos el archivo tsv del reporte que se encuentra en la siguiente liga:</p>
+<p>Vamos a descargar el reporte del BioProject para obtener las ligas de descarga de cada librería, <strong>asegurate de que el nombre del experimento este marcado en las casillas</strong>, descarguemos el archivo tsv del reporte que se encuentra en la siguiente liga:</p>
 <p><a href="https://www.ebi.ac.uk/ena/browser/view/PRJNA556980" class="uri">https://www.ebi.ac.uk/ena/browser/view/PRJNA556980</a></p>
 <p>Ve a la terminal de tu computadora y sitúate en el directorio en donde se descargó el reporte.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="obtener-más-información.html#cb43-1" tabindex="-1"></a><span class="bu">cd</span> ~/Downloads/</span>
@@ -257,7 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>:o Ahora si contiene sólo la información de las librerías del 16S, sin embargo aún nos falta un poco…
 Si recordamos, cada librería está pareada, si notamos el contenido de la columna 2 veremos que hay dos ligas de descarga separadas por un <code>;</code> así que necesitamos obtener cada liga por separado.</p>
 <p><strong><code>sed</code></strong> nos ayuda a sustituir patrones de texto o caracteres.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="obtener-más-información.html#cb52-1" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3,6</span> reporte.txt<span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">&#39; &#39;</span> <span class="at">-f4-7</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">&#39;its&#39;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&#39;s/;/\n\t/g&#39;</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">&#39;experiment&#39;</span> <span class="op">&gt;</span> data/reporte_16S.txt</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="obtener-más-información.html#cb52-1" tabindex="-1"></a><span class="fu">cat</span> data/reporte.txt  <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">&#39;its&#39;</span> <span class="kw">|</span>  <span class="fu">grep</span> <span class="at">-v</span> <span class="st">&#39;fastq_ftp&#39;</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f5</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&#39;s/;/\n/g&#39;</span> <span class="kw">|</span> <span class="fu">less</span> <span class="at">-S</span></span></code></pre></div>
 <hr />
 </div>
 <div id="obtener-las-secuencias" class="section level3 hasAnchor" number="6.1.3">

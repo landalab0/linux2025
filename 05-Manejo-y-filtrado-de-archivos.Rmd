@@ -9,7 +9,7 @@ En esta sesión, exploraremos los comandos `sed`, `tr` y ciclos `for`. Además a
 
 Trabajaremos con datos de amplicones de la región V3-V4 del 16S rRNA de muestras tres tiempos de fermentación del pulque, estos se obtuvieron con una plataforma ILLUMINA MiSeq (2 x 300 pb) y están en formato FASTQ. Los datos fueron depositados en NCBI y ENA bajo el BioProject **PRJEB13870** del artículo **[Deep microbial community profiling along the fermentation process of pulque, a biocultural resource of Mexico](https://www.sciencedirect.com/science/article/pii/S0944501320304614#sec0010)**. 
 
-Vamos a descargar el reporte del BioProject para obtener las ligas de descarga de cada librería, descarguemos el archivo tsv del reporte que se encuentra en la siguiente liga:
+Vamos a descargar el reporte del BioProject para obtener las ligas de descarga de cada librería, **asegurate de que el nombre del experimento este marcado en las casillas**, descarguemos el archivo tsv del reporte que se encuentra en la siguiente liga:
 
 https://www.ebi.ac.uk/ena/browser/view/PRJNA556980
 
@@ -92,7 +92,7 @@ Si recordamos, cada librería está pareada, si notamos el contenido de la colum
 
 
 ```bash
-cut -f3,6 reporte.txt| cut -d' ' -f4-7 | grep -v 'its' | sed 's/;/\n\t/g' | grep -v 'experiment' > data/reporte_16S.txt
+cat data/reporte.txt  | grep -v 'its' |  grep -v 'fastq_ftp' | cut -f5 | sed 's/;/\n/g' | less -S
 ```
 
 ---
